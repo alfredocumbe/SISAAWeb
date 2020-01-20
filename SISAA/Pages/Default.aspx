@@ -37,7 +37,7 @@
                         <div class="inner">
                             <h3>150</h3>
 
-                            <p>Saldo currente</p>
+                            <p>Saldo Corrente</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -82,7 +82,7 @@
                         <div class="inner">
                             <h3>65</h3>
 
-                            <p>SMS nao enviadas</p>
+                            <p>SMS Não Enviadas</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
