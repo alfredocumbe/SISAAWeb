@@ -204,6 +204,19 @@
     <Content Include="dist\js\adminlte.js.map" />
     <Content Include="dist\js\adminlte.min.js.map" />
     <Content Include="Pages\About.aspx" />
+    <Content Include="Pages\CreateUser.aspx" />
+    <Content Include="Pages\DualList.aspx" />
+    <Content Include="Pages\ImportParent.aspx" />
+    <Content Include="Pages\ImportStudent.aspx" />
+    <Content Include="Pages\NotSent.aspx" />
+    <Content Include="Pages\Panding.aspx" />
+    <Content Include="Pages\SendSMS.aspx" />
+    <Content Include="Pages\Sent.aspx" />
+    <Content Include="Pages\Student.aspx" />
+    <Content Include="Pages\Parent.aspx" />
+    <Content Include="Pages\Group.aspx" />
+    <Content Include="Pages\CreateGroup.aspx" />
+    <Content Include="Pages\CreateParent.aspx" />
     <Content Include="Pages\CreateStudent.aspx" />
     <Content Include="Pages\CreateContact.aspx" />
     <Content Include="Pages\Contact.aspx" />
@@ -285,7 +298,9 @@
     <Content Include="build\scss\_toasts.scss" />
     <Content Include="build\scss\_users-list.scss" />
     <Content Include="build\scss\_variables.scss" />
+    <Content Include="Pages\User.aspx" />
     <Content Include="Scripts\Controller\CreateStudent.js" />
+    <Content Include="Scripts\Global.js" />
     <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -491,6 +506,7 @@
     <Content Include="Template\pages\examples\project_edit.html" />
     <Content Include="Template\pages\examples\recover-password.html" />
     <Content Include="Template\pages\examples\register.html" />
+    <Content Include="Template\pages\forms\multiple.html" />
     <Content Include="Template\pages\forms\advanced.html" />
     <Content Include="Template\pages\forms\editors.html" />
     <Content Include="Template\pages\forms\general.html" />
@@ -2341,6 +2357,97 @@
     <Compile Include="Pages\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CreateUser.aspx.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateUser.aspx.designer.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DualList.aspx.cs">
+      <DependentUpon>DualList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DualList.aspx.designer.cs">
+      <DependentUpon>DualList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ImportParent.aspx.cs">
+      <DependentUpon>ImportParent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ImportParent.aspx.designer.cs">
+      <DependentUpon>ImportParent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ImportStudent.aspx.cs">
+      <DependentUpon>ImportStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ImportStudent.aspx.designer.cs">
+      <DependentUpon>ImportStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NotSent.aspx.cs">
+      <DependentUpon>NotSent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NotSent.aspx.designer.cs">
+      <DependentUpon>NotSent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Panding.aspx.cs">
+      <DependentUpon>Panding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Panding.aspx.designer.cs">
+      <DependentUpon>Panding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SendSMS.aspx.cs">
+      <DependentUpon>SendSMS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SendSMS.aspx.designer.cs">
+      <DependentUpon>SendSMS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Sent.aspx.cs">
+      <DependentUpon>Sent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Sent.aspx.designer.cs">
+      <DependentUpon>Sent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Student.aspx.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Student.aspx.designer.cs">
+      <DependentUpon>Student.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Parent.aspx.cs">
+      <DependentUpon>Parent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Parent.aspx.designer.cs">
+      <DependentUpon>Parent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Group.aspx.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Group.aspx.designer.cs">
+      <DependentUpon>Group.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateGroup.aspx.cs">
+      <DependentUpon>CreateGroup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateGroup.aspx.designer.cs">
+      <DependentUpon>CreateGroup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateParent.aspx.cs">
+      <DependentUpon>CreateParent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateParent.aspx.designer.cs">
+      <DependentUpon>CreateParent.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CreateStudent.aspx.cs">
       <DependentUpon>CreateStudent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2369,6 +2476,13 @@
     <Compile Include="Pages\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -2383,6 +2497,13 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site2.Master.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site2.Master.designer.cs">
+      <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -2401,6 +2522,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <None Include="packages.config" />
+    <Content Include="Site2.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
