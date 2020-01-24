@@ -16,7 +16,7 @@ function formatRow(row) {
         "name": row[0],
         "profession": row[1],
         "address": row[2],
-        "cellphone": row[2],
+        "cellphone": row[3],
     };
 }
 
@@ -28,48 +28,74 @@ function formatTable(tableData) {
     return data;
 }
 
+function limparCampos(){
+    $("#parents tbody tr").remove();
+    $("#studentName").val("");
+}
+
+function validar(){
+    var isValid = true;
+
+// TUDO
+
+    return isValid;
+}
+
 function sendrequest(data) {
     console.log(data);
     console.log(JSON.stringify(data));
     $.ajax({
-        url: "https://localhost:44338/api/Student",
+        url: GlobalBaseURL + "api/Student",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
         data: JSON.stringify(data),
-        beforeSend: function (xhr) { console.log("beforeSend"); },
-        error: function (xhr) { console.log("error"); },
-        success: function (xhr) { console.log("success"); },
-        complete: function (xhr) { console.log("complete"); }
+        beforeSend: function (xhr) { 
+            console.log("Enviado os dados para o servidoor"); 
+        },
+        error: function (xhr) { 
+            console.log("Ocorreu um erro na operacao");
+            Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
+        },
+        success: function (xhr) { 
+            console.log(xhr);
+            if(xhr.header.code == "200"){
+                console.log("Operacao executada com sucesso!");
+                Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
+                limparCampos();
+            }else{
+                console.log("Ocorreu um erro na operacao" + xhr.header.message);
+            }
+        },
+        complete: function (xhr) { 
+            console.log("Operacacao terminada");
+         }
     });
 }
 
 $("#form1").submit(function (event) {
     event.preventDefault();
+    console.log(GlobalBaseURL);
     var studentName = $("#studentName").val();
     var sexo = $("input[name='gender']:checked").val();
     var table = $("#parents")
     var tableData = getTableData(table);
     var parents = formatTable(tableData);
 
-    var header = {
-        "UserID": "49ea4e24-ad7f-4573-9bf3-d4c13ecfca3c",
-        "system": "WEB",
-        "token": "tokemteste123"
-    };
-
     var body = {
         "name": studentName,
         "gender": sexo,
+        "AccountID": GlobalHeader.AccountID,
         "parents": parents
     }
 
     var data = {
-        "header": header,
+        "header": GlobalHeader,
         "body": body
     };
 
-    sendrequest(data)
-
-    alert("Handler for .submit() called.");
+    if(validar()){
+        sendrequest(data);
+    }
+   
 });

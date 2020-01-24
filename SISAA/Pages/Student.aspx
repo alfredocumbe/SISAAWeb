@@ -47,7 +47,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed text-nowrap">
+                                    <table class="table table-head-fixed text-nowrap" id="parents">
                                         <thead>
                                             <tr>
                                                 <th class="d-none">ID</th>
@@ -109,57 +109,15 @@
                 </div>
                 <!-- /.row -->
             </div>
-            <%--Modals--%>
 
-            <div class="modal fade" id="EditarGrupo">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Alterar Dados do Estudante</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
+<%-- Lista de Modal --%>
+             
+             <div  id="modelContainer">
 
-                            <!-- form start -->
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="groupName">Nome</label>
-                                    <input type="hidden" class="form-control" id="groupID">
-                                    <input type="text" class="form-control" id="groupName" placeholder="Digita nome">
-                                </div>
+                   
 
-                                <div class="form-group">
-                                    <label for="exampleInputGender">Sexo</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="M" name="gender" checked="true">
-                                        <label class="form-check-label">Masculino</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="F" name="gender">
-                                        <label class="form-check-label">Femenino</label>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Gravar</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-
-
-
-                <!-- /.modal-dialog -->
-            </div>
+             </div>
                        
-
             <div class="modal fade" id="VerEncarregado">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
@@ -195,7 +153,7 @@
                 </div>
                 <!-- /.modal-dialog -->
             </div>
-
+<%-- Fim Lista de Modal --%>
             <!-- /.container-fluid -->
 
             <!-- /.container-fluid -->
@@ -212,5 +170,5 @@
         })
     </script>
 
-    <script src="/SISAA/Scripts/Controller/CreateStudent.js"></script>
+    <script src="/SISAA/Scripts/Controller/Student.js"></script>
 </asp:Content>

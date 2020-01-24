@@ -1,5 +1,4 @@
-﻿
-//EDITABLE TABLE
+﻿//EDITABLE TABLE
 
 const $tableID = $('#table');
 const $BTN = $('#export-btn');
