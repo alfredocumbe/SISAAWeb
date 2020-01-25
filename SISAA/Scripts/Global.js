@@ -8,7 +8,7 @@ var GlobalHeader = {
 
 // var GlobalBaseURL = "https://localhost:44338/";
 
-var GlobalBaseURL = "http://localhost/SASAA/";
+var GlobalBaseURL = "http://localhost/SISAAWS/";
 
 //Global Initialization
 const Toast = Swal.mixin({
