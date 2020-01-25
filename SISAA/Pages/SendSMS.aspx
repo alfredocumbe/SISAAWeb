@@ -67,34 +67,9 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body p-0">
-                                <ul class="nav nav-pills flex-column">
-                                    <li>
-                                        <div class="icheck-success d-inline">
-                                            <input type="checkbox" id="checkboxSuccess3">
-                                            <label for="checkboxSuccess3">
-                                                Success checkbox
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icheck-success d-inline">
-                                            <input type="checkbox" id="checkboxSuccess2">
-                                            <label for="checkboxSuccess2">
-                                                Success checkbox
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="icheck-success d-inline">
-                                            <input type="checkbox" id="checkboxSuccess1">
-                                            <label for="checkboxSuccess1">
-                                                Success checkbox
-                                            </label>
-                                        </div>
-                                    </li>
+                                <ul class="nav nav-pills flex-column" id="groups">
+
                                 </ul>
-
-
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -109,12 +84,12 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Para:">
+                                    <input class="form-control" id="sendTo" placeholder="Para:">
                                 </div>
                                 <div class="form-group">
                                     <textarea id="compose-textarea" class="form-control" style="height: 150px;">
                         
-                    </textarea>
+</textarea>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -137,4 +112,17 @@
 
     </section>
 
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
+
+<script src="/SISAA/Scripts/Controller/SendSMS.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            //Bootstrap Duallistbox
+            // $('.duallistbox').bootstrapDualListbox(); *@
+        })
+    </script>
+    
 </asp:Content>

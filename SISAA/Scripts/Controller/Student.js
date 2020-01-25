@@ -1,4 +1,6 @@
 
+var Encarregados = [];
+
 function bindTable(data){
     
     $("#parents tbody tr").remove();
@@ -6,8 +8,17 @@ function bindTable(data){
     var count = 0;
     var EditarGrupo = '';
     var VerEncarregado = '';
+    buscarEncarregado();
+
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    };
+    sleep(500).then(() => {
+        //do stuff
+        console.log("Encarregados...");
+        console.log(Encarregados);
     $.each(data, function(i, item) {
-        console.log(item);
+
         count = count + 1;
 
         var sexoM = "";
@@ -80,14 +91,15 @@ function bindTable(data){
 
         $("#parents tbody").append($tr);
 
-        //Ver Encarrehado
-        var TodosEncarregados = buscarEncarregado();
-
         var option = "";
-        
-        $.each(TodosEncarregados, function(i, item) {
-            option = option + '<option value="'+item.parentID+'">'+item.name+'</option>';
-        });
+
+        for (i = 0; i < Encarregados.length; i++) {
+            option = option + '<option value="'+Encarregados[i].parentID+'">'+Encarregados[i].name+'</option>';
+        }
+
+        // $.each(Encarregados, function(i, item) {
+        //     option = option + '<option value="'+item.parentID+'">'+item.name+'</option>';
+        // });
 
         VerEncarregado = VerEncarregado + '<div class="modal fade" id="VerEncarregado'+count+'">';
         VerEncarregado = VerEncarregado + '<div class="modal-dialog modal-xl">';
@@ -107,7 +119,7 @@ function bindTable(data){
         VerEncarregado = VerEncarregado + '        </div>';
         VerEncarregado = VerEncarregado + '        <div class="modal-footer justify-content-between">';
         VerEncarregado = VerEncarregado + '            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-        VerEncarregado = VerEncarregado + '            <button type="button" class="btn btn-primary">Save changes</button>';
+        VerEncarregado = VerEncarregado + '            <button type="button" class="btn btn-primary" onclick="AssociarEncarregado('+count+')">Save changes</button>';
         VerEncarregado = VerEncarregado + '        </div>';
         VerEncarregado = VerEncarregado + '    </div>';
         VerEncarregado = VerEncarregado + '    <!-- /.modal-content -->';
@@ -115,12 +127,15 @@ function bindTable(data){
         VerEncarregado = VerEncarregado + '<!-- /.modal-dialog -->';
         VerEncarregado = VerEncarregado + '</div>';
 
-        $('#duallistbox'+count).bootstrapDualListbox();
-
     }); 
 
     $("#modelContainer").html(EditarGrupo + VerEncarregado);
 
+    for (i = 0; i < count; i++) {
+        $('#duallistbox'+i).bootstrapDualListbox();
+    }
+
+  });   
 }
 
 function EditarEstudante(count){
@@ -157,25 +172,25 @@ function sendrequest() {
         method: "POST",
         data: JSON.stringify(data),
         beforeSend: function (xhr) { 
-            console.log("Enviado os dados para o servidoor"); 
+            //console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
-            console.log("Ocorreu um erro na operacao");
-            Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
+            //console.log("Ocorreu um erro na operacao");
+            Toast.fire({type: 'error', title: ''});
         },
         success: function (xhr) { 
             bindTable(xhr.body);
             if(xhr.header.code == "200"){
-                console.log("Operacao executada com sucesso!");
-                Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
+                //console.log("Operacao executada com sucesso!");
+                Toast.fire({type: 'success', title: ''});
                 limparCampos();
                 $('.duallistbox').bootstrapDualListbox();
             }else{
-                console.log("Ocorreu um erro na operacao" + xhr.header.message);
+                //console.log("Ocorreu um erro na operacao" + xhr.header.message);
             }
         },
         complete: function (xhr) { 
-            console.log("Operacacao terminada");
+            //console.log("Operacacao terminada");
          }
     });
 }
@@ -192,55 +207,107 @@ function sendRequestEditarEstudante(data){
         method: "POST",
         data: JSON.stringify(data),
         beforeSend: function (xhr) { 
-            console.log("Enviado os dados para o servidoor"); 
+            //console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
-            console.log(xhr);
-            console.log("Ocorreu um erro na operacao");
+            //console.log(xhr);
+            //console.log("Ocorreu um erro na operacao");
             Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
         },
         success: function (xhr) { 
             console.log(xhr);
             bindTable(xhr.body);
             if(xhr.header.code == "200"){
-                console.log("Operacao executada com sucesso!");
+                //console.log("Operacao executada com sucesso!");
                 Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
                 limparCampos();
             }else{
-                console.log("Ocorreu um erro na operacao" + xhr.header.message);
+                //console.log("Ocorreu um erro na operacao" + xhr.header.message);
             }
         },
         complete: function (xhr) { 
-            console.log("Operacacao terminada");
+            //console.log("Operacacao terminada");
          }
     });    
 }
 
+// const getUser = function (){
+//     var Encarregados = [];
+//     var data = {
+//         "header": GlobalHeader,
+//         "body": 0
+//     };
+
+//     $.ajax({
+//         url: GlobalBaseURL + "api/Parent/GetALL",
+//         dataType: "json",
+//         contentType: "application/json",
+//         method: "POST",
+//         data: JSON.stringify(data),
+//         beforeSend: function (xhr) { 
+//             //console.log("Enviado os dados para o servidoor"); 
+//         },
+//         error: function (xhr) { 
+//             //console.log(xhr);
+//             //console.log("Ocorreu um erro na operacao");
+//         },
+//         success: function (xhr) { 
+//             Encarregados = xhr.body
+//             console.log("success");
+//         },
+//         complete: function (xhr) { 
+//             //console.log("Operacacao terminada");
+//          }
+//     });  
+//     return Encarregados;
+// };
+
 function buscarEncarregado(){
-    return Encarregados = [
-        {
-            "parentID": "00000000-0000-0000-0000-000000000000",
-            "name": "Alfredo Cumbe",
-            "profession": null,
-            "address": null,
-            "cellphone": null,
-            "accountID": "00000000-0000-0000-0000-000000000000",
-            "contactID": "00000000-0000-0000-0000-000000000000",
-            "isDeleted": false,
-            "isBlocked": false
-          },
-          {
-            "parentID": "00000000-0000-0000-0000-000000000000",
-            "name": "Neide Joana",
-            "profession": null,
-            "address": null,
-            "cellphone": null,
-            "accountID": "00000000-0000-0000-0000-000000000000",
-            "contactID": "00000000-0000-0000-0000-000000000000",
-            "isDeleted": false,
-            "isBlocked": false
-          }
-    ];
+    
+    var data = {
+        "header": GlobalHeader,
+        "body": 0
+    };
+
+    $.ajax({
+        url: GlobalBaseURL + "api/Parent/GetALL",
+        dataType: "json",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify(data),
+        beforeSend: function (xhr) { 
+            //console.log("Enviado os dados para o servidoor"); 
+        },
+        error: function (xhr) { 
+            //console.log(xhr);
+            //console.log("Ocorreu um erro na operacao");
+        },
+        success: function (xhr) { 
+            Encarregados = xhr.body
+            console.log("success");
+        },
+        complete: function (xhr) { 
+            //console.log("Operacacao terminada");
+         }
+    });  
+}
+
+function AssociarEncarregado(count){
+    console.log(count);
+    console.log($("#duallistbox"+count));
+
+    var selectedParents = [];
+    $.each($("#duallistbox"+count), function(){            
+        selectedParents.push($(this).val());
+    });
+
+    var data = {
+        "header": GlobalHeader,
+        "body": selectedParents[0]
+    };
+
+    //var selectedParent = $("#duallistbox"+count).children("option:selected").val();
+    console.log(selectedParents[0]);
 }
 
 sendrequest();
