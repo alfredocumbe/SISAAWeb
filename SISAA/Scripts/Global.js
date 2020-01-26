@@ -16,4 +16,15 @@ const Toast = Swal.mixin({
     position: 'top-end',
     showConfirmButton: false,
     timer: 3000
-  });
+});
+
+//Loading variables
+const loadingStart = function () {
+    $body = $("body").addClass("loading");
+};
+
+const loadingStop = function () {
+    $body = $("body").removeClass("loading");
+};
+
+loadingStart();

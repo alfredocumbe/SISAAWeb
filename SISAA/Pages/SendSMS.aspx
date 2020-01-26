@@ -84,7 +84,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <input class="form-control" id="sendTo" placeholder="Para:">
+                                    <input class="form-control" id="sendTo" placeholder="Para:" autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <textarea id="compose-textarea" class="form-control" style="height: 150px;">
@@ -95,9 +95,9 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i>Enviar</button>
+                                    <button type="button" class="btn btn-primary"><i class="far fa-envelope" onclick="enviarSMS()"></i>Enviar</button>
                                 </div>
-                                <button type="reset" class="btn btn-default"><i class="fas fa-times"></i>Limpar</button>
+                                <button type="reset" id="reset" class="btn btn-default"><i class="fas fa-times"></i>Limpar</button>
                             </div>
                             <!-- /.card-footer -->
                         </div>
