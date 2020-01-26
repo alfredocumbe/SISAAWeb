@@ -204,6 +204,10 @@
     <Content Include="dist\js\adminlte.js.map" />
     <Content Include="dist\js\adminlte.min.js.map" />
     <Content Include="Pages\About.aspx" />
+    <Content Include="Pages\AdmCreateUser.aspx" />
+    <Content Include="Pages\AdmUser.aspx" />
+    <Content Include="Pages\Company.aspx" />
+    <Content Include="Pages\CreateCompany.aspx" />
     <Content Include="Pages\CreateUser.aspx" />
     <Content Include="Pages\DualList.aspx" />
     <Content Include="Pages\ImportParent.aspx" />
@@ -2356,6 +2360,34 @@
     </Compile>
     <Compile Include="Pages\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdmCreateUser.aspx.cs">
+      <DependentUpon>AdmCreateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdmCreateUser.aspx.designer.cs">
+      <DependentUpon>AdmCreateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdmUser.aspx.cs">
+      <DependentUpon>AdmUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdmUser.aspx.designer.cs">
+      <DependentUpon>AdmUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateCompany.aspx.cs">
+      <DependentUpon>CreateCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateCompany.aspx.designer.cs">
+      <DependentUpon>CreateCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CreateUser.aspx.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>

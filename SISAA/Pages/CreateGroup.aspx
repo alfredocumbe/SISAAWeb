@@ -11,7 +11,7 @@
                 <div class="row d-flex align-items-stretch">
                     <div class="col-9">
                         <div class="col-sm-9">
-                            <h1>FORMULARIO DO GRUPOS</h1>
+                            <h1>NOVO GRUPO</h1>
                         </div>
                     </div>
                     <div class="col-3">
@@ -39,8 +39,7 @@
                                 </div>
 
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary">Gravar</button>
-                                    <button type="reset" class="btn btn-primary">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Criar Grupo</button>
                                 </div>
 
                             </div>

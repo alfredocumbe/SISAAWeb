@@ -29,14 +29,16 @@
     <link rel="stylesheet" href="/SISAA/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="/SISAA/plugins/summernote/summernote-bs4.css">
-      <!-- Bootstrap4 Duallistbox -->
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/SISAA/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="/SISAA/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+    <!-- Bootstrap4 Duallistbox -->
     <link rel="stylesheet" href="/SISAA/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
     <%--for editable table --%>
     <link rel="stylesheet" href="/SISAA/Content/Site.css">
-
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
@@ -50,7 +52,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
-                        
+
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
@@ -176,7 +178,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                        
+
                         <li class="nav-item">
                             <a href="/SISAA/Pages/Default" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -190,7 +192,7 @@
 
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-id-badge"></i>
+                                <i class="nav-icon fas fa-user-graduate"></i>
                                 <p>
                                     Estudantes
                
@@ -201,19 +203,19 @@
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/CreateStudent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Novo</p>
+                                        <p>Novo Estudante</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/Student" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Listar</p>
+                                        <p>Listar Estudantes</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/ImportStudent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Importar</p>
+                                        <p>Importar Estudantes</p>
                                     </a>
                                 </li>
                             </ul>
@@ -221,7 +223,7 @@
 
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-id-badge"></i>
+                                <i class="nav-icon fas fa-hat-cowboy"></i>
                                 <p>
                                     Encarregados
                
@@ -232,25 +234,25 @@
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/CreateParent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Novo</p>
+                                        <p>Novo Encarregado</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/Parent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Listar</p>
+                                        <p>Listar Encarregados</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/ImportParent" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Importar</p>
+                                        <p>Importar Encarregados</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                       <li class="nav-item">
+                        <li class="nav-item">
                             <a href="/SISAA/Pages/Contact" class="nav-link">
                                 <i class="nav-icon fas fa-id-badge"></i>
                                 <p>
@@ -274,18 +276,18 @@
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/CreateGroup" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Novo</p>
+                                        <p>Novo Grupo</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/Group" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Listar</p>
+                                        <p>Listar Grupos</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                       
+
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-sms"></i>
@@ -313,31 +315,100 @@
 
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-user-friends"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
-                                    Utilizadores
+                                    Gestao de Utilizadores
                
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/SISAA/Pages/CreateUsers" class="nav-link">
+                                    <a href="/SISAA/Pages/CreateUser" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Novo</p>
+                                        <p>Novo Utilizador</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="/SISAA/Pages/User" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Listar</p>
+                                        <p>Listar Utilizadores</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
 
-                        
-                        
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Gestao de Utilizadores(Adm)
+               
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/SISAA/Pages/AdmCreateUser" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Novo Utilizador</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/SISAA/Pages/AdmUser" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Listar Utilizadores</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    Gestao de Empresas(Adm)
+               
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/SISAA/Pages/CreateCompany" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Nova Empresa</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/SISAA/Pages/Company" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Listar Empresas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Relatorios
+               
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/SISAA/Pages/AdmCreateUser" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>SMS Enviadas</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -345,16 +416,16 @@
             <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->       
+        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-        <form id="form1" runat="server">
+            <form id="form1" runat="server">
                 <asp:ScriptManager EnablePartialRendering="true" ID="ScriptManager1" runat="server"></asp:ScriptManager>
-                    <div>
-                        <asp:ContentPlaceHolder ID="Body" runat="server">
-                        </asp:ContentPlaceHolder>
-                    </div>           
-                
-                
+                <div>
+                    <asp:ContentPlaceHolder ID="Body" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+
+
             </form>
         </div>
         <!-- /.content-wrapper -->
@@ -381,7 +452,7 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
         $.widget.bridge('uibutton', $.ui.button)
-</script>
+    </script>
     <!-- Bootstrap 4 -->
     <script src="/SISAA/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
@@ -402,7 +473,9 @@
     <script src="/SISAA/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- overlayScrollbars -->
     <script src="/SISAA/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-        <!--Bootstrap4 Duallistbox-->
+    <!-- Select2 -->
+    <script src="/SISAA/plugins/select2/js/select2.full.min.js"></script>
+    <!--Bootstrap4 Duallistbox-->
     <script src="/SISAA/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <!-- AdminLTE App -->
     <script src="/SISAA/dist/js/adminlte.js"></script>

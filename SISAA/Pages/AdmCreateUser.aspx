@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateUser.aspx.cs" Inherits="SISAA.Pages.CreateUser" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdmCreateUser.aspx.cs" Inherits="SISAA.Pages.AdmCreateUser" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -40,23 +40,36 @@
                                             <label for="exampleInputName">Nome Completo</label>
                                             <input type="text" class="form-control" id="studentName" placeholder="Digita nome">
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail">Email</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Digita email">
-                                        </div>
-                                    </div>
 
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="userName">Login</label>
                                             <input type="text" class="form-control" id="userName" placeholder="Username">
                                         </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Empresa</label>
+                                            <select class="form-control">
+                                                <option>BIM</option>
+                                                <option>SIM</option>
+                                                <option>Vodacom</option>
+                                                <option>BCI</option>
+                                                <option>Moza Banco</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail">Email</label>
+                                            <input type="email" class="form-control" id="exampleInputEmail" placeholder="Digita email">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="userPassword">Password</label>
                                             <input type="password" class="form-control" id="userPassword" placeholder="Password">
@@ -66,14 +79,13 @@
                                             <input type="password" class="form-control" id="userConfirm" placeholder="Confirm Password">
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        
+                                    <div class="col-sm-9">
                                     </div>
 
                                 </div>
-                                
 
-                                
+
+
 
                                 <div class="">
                                     <button type="submit" class="btn btn-primary">Criar Utilizador</button>
@@ -96,4 +108,15 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ControllerScript" runat="server">
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+        })
+    </script>
 </asp:Content>

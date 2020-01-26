@@ -10,7 +10,7 @@
                 <div class="row d-flex align-items-stretch">
                     <div class="col-9">
                         <div class="col-sm-9">
-                            <h1>LISTA DE MENSAGENS ENVIDAS</h1>
+                            <h1>CONSULTA MENSAGENS ENVIDAS</h1>
                         </div>
                     </div>
                     <div class="col-3">

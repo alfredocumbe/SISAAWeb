@@ -11,7 +11,7 @@
                 <div class="row d-flex align-items-stretch">
                     <div class="col-9">
                         <div class="col-sm-6">
-                            <h1>FORMULARIO DO ESTUDANTE</h1>
+                            <h1>NOVO ESTUDANTE</h1>
                         </div>
                     </div>
                     <div class="col-3">
@@ -50,8 +50,7 @@
                                 </div>
 
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary">Gravar</button>
-                                    <button type="reset"  class="btn btn-primary">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Criar Estudante</button>
                                 </div>
 
                             </div>
