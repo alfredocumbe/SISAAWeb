@@ -4,19 +4,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <section class="content">
 
-        <div class="card card-solid">
-            <div class="card-body pb-10">
-                <div class="row d-flex align-items-stretch">
-                    <div class="col-9">
-                        <div class="col-sm-9">
-                            <h1>LISTA DE MENSAGENS PENDENTES</h1>
-                        </div>
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">LISTA DE MENSAGENS NAO PENDENTES</h1>
                     </div>
-                    <div class="col-3">
+                    <!-- /.col -->
+                    <div class="col-sm-6">
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
         <section class="content">
             <div class="container-fluid">

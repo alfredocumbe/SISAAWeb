@@ -1,22 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NotSent.aspx.cs" Inherits="SISAA.Pages.NotSent" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
     <section class="content">
 
-        <div class="card card-solid">
-            <div class="card-body pb-10">
-                <div class="row d-flex align-items-stretch">
-                    <div class="col-9">
-                        <div class="col-sm-9">
-                            <h1>LISTA DE MENSAGENS NAO ENVIDAS</h1>
-                        </div>
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">LISTA DE MENSAGENS NAO ENVIDAS</h1>
                     </div>
-                    <div class="col-3">
+                    <!-- /.col -->
+                    <div class="col-sm-6">
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
         <section class="content">
             <div class="container-fluid">
@@ -51,7 +56,7 @@
                                                 <th style="width: 10%">Celular</th>
                                                 <th style="width: 40%">Nome</th>
                                                 <th style="width: 10%">Data</th>
-                                                <th style="width: 40%">Mensagem</th>                                                
+                                                <th style="width: 40%">Mensagem</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -59,13 +64,13 @@
                                                 <td>824844980</td>
                                                 <td>Elisio Mananze</td>
                                                 <td>23-01-2020 12:22</td>
-                                                <td>824844980</td>                                           
+                                                <td>824844980</td>
                                             </tr>
                                             <tr>
                                                 <td>824844980</td>
                                                 <td>Elisio Mananze</td>
                                                 <td>23-01-2020 12:22</td>
-                                                <td>824844980</td>                                           
+                                                <td>824844980</td>
                                             </tr>
 
                                         </tbody>
@@ -83,12 +88,12 @@
                 </div>
                 <!-- /.row -->
             </div>
-                              
+
 
             <!-- /.container-fluid -->
         </section>
 
-    </section>   
+    </section>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ControllerScript" runat="server">
 </asp:Content>

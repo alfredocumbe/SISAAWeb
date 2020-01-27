@@ -80,6 +80,7 @@ function enviarSMSRequest(data){
             console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
+            loadingStop();
             console.log("Ocorreu um erro na operacao");
             Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
         },

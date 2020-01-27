@@ -5,20 +5,23 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="Body" runat="server">
 
     <section class="content">
-
-        <div class="card card-solid">
-            <div class="card-body pb-10">
-                <div class="row d-flex align-items-stretch">
-                    <div class="col-9">
-                        <div class="col-sm-9">
-                            <h1>FORMULARIO DO ENCARREGADO</h1>
-                        </div>
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">NOVO ENCARREGADO</h1>
                     </div>
-                    <div class="col-3">
+                    <!-- /.col -->
+                    <div class="col-sm-6">
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
         <section class="content">
             <div class="container-fluid">
@@ -34,26 +37,25 @@
                             <!-- form start -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputName">Nome Completo</label>
-                                    <input type="text" class="form-control" id="studentName" placeholder="Digita nome">
+                                    <label for="parentName">Nome Completo</label>
+                                    <input type="text" class="form-control" id="parentName" placeholder="Digita nome" required="Este campo nao pode ser vazio">
                                 </div>
                                 <div class="form-group">
                                     <label for="parentProfissao">Profissao</label>
-                                    <input type="text" class="form-control" id="parentProfissao" placeholder="Digita nome">
+                                    <input type="text" class="form-control" id="parentProfissao" placeholder="Digita profissao" required >
                                 </div>
                                 <div class="form-group">
                                     <label for="parentAddress">Endereco</label>
-                                    <input type="text" class="form-control" id="parentAddress" placeholder="Digita nome">
+                                    <input type="text" class="form-control" id="parentAddress" placeholder="Digita enderreco" required>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="parentAddress">Celular</label>
-                                    <input type="text" class="form-control" id="parentPhone" placeholder="Digita nome">
+                                    <label for="parentPhone">Celular</label>
+                                    <input type="text" class="form-control" id="parentPhone" data-inputmask="'mask': ['999-999-9999 [x99999]', '+099 99 99 9999[9]-9999']" data-mask="" im-insert="true" required>
                                 </div>
 
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary">Gravar</button>
-                                    <button type="reset" class="btn btn-primary">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Criar Encarregado</button>
                                 </div>
 
                             </div>
@@ -130,5 +132,5 @@
             $('.duallistbox').bootstrapDualListbox();
         })
     </script>
-    <script src="/SISAA/Scripts/Controller/CreateStudent.js"></script>
+    <script src="/SISAA/Scripts/Controller/CreateParent.js"></script>
 </asp:Content>

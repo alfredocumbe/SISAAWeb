@@ -6,19 +6,23 @@
 
     <section class="content">
 
-        <div class="card card-solid">
-            <div class="card-body pb-10">
-                <div class="row d-flex align-items-stretch">
-                    <div class="col-9">
-                        <div class="col-sm-6">
-                            <h1>FORMULARIO DO ESTUDANTE</h1>
-                        </div>
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">NOVO ESTUDANTE</h1>
                     </div>
-                    <div class="col-3">
+                    <!-- /.col -->
+                    <div class="col-sm-6">
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
         <section class="content">
             <div class="container-fluid">
@@ -35,7 +39,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputName">Nome Completo</label>
-                                    <input type="text" class="form-control" id="studentName" placeholder="Digita nome">
+                                    <input type="text" class="form-control" id="studentName" placeholder="Digita nome" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputGender">Sexo</label>
@@ -50,8 +54,7 @@
                                 </div>
 
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary">Gravar</button>
-                                    <button type="reset"  class="btn btn-primary">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary">Criar Estudante</button>
                                 </div>
 
                             </div>
@@ -85,7 +88,7 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="pt-1-half" contenteditable="true">Nome do Pai</td>
+                                                <td class="pt-1-half" contenteditable="true">Encarregado 1</td>
                                                 <td class="pt-1-half" contenteditable="true">Profissão</td>
                                                 <td class="pt-1-half" contenteditable="true">Endereço</td>
                                                 <td class="pt-1-half" contenteditable="true">Celular</td>
@@ -97,7 +100,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="pt-1-half" contenteditable="true">Nome da Mãe</td>
+                                                <td class="pt-1-half" contenteditable="true">Encarregado 2</td>
                                                 <td class="pt-1-half" contenteditable="true">Profissão</td>
                                                 <td class="pt-1-half" contenteditable="true">Endereço</td>
                                                 <td class="pt-1-half" contenteditable="true">Celular</td>

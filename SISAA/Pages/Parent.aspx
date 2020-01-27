@@ -6,19 +6,23 @@
 
     <section class="content">
 
-        <div class="card card-solid">
-            <div class="card-body pb-10">
-                <div class="row d-flex align-items-stretch">
-                    <div class="col-9">
-                        <div class="col-sm-9">
-                            <h1>LISTA DE ENCARREGADOS</h1>
-                        </div>
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">CONSULTA DE ENCARREGADOS</h1>
                     </div>
-                    <div class="col-3">
+                    <!-- /.col -->
+                    <div class="col-sm-6">
                     </div>
+                    <!-- /.col -->
                 </div>
+                <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </div>
+        <!-- /.content-header -->
 
         <section class="content">
             <div class="container-fluid">
@@ -47,7 +51,7 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed text-nowrap">
+                                    <table class="table table-head-fixed text-nowrap" id="parentes">
                                         <thead>
                                             <tr>
                                                 <th class="d-none">ID</th>
@@ -57,49 +61,10 @@
                                                 <th style="width: 10%">Celular</th>
                                                 <th style="width: 20%"></th>
                                             </tr>
-                                        </thead>
+                                        </thead>                                       
+                                        
                                         <tbody>
-                                            <tr>
-                                                <td class="d-none">183</td>
-                                                <td>John Doe</td>
-                                                <td>Tecnico IT</td>
-                                                <td>Cidade de Maputo</td>
-                                                <td>824844980</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                                        <div class="btn-group" role="group">
-                                                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Comando
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#EditarGrupo">Editar Encarregado</a>
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerEstudante">Ver Estudantes</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="d-none">219</td>
-                                                <td>Alexander Pierce</td>
-                                                <td>Tecnico IT</td>
-                                                <td>Cidade de Maputo</td>
-                                                <td>824844980</td>
-                                                <td>
-                                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                                        <div class="btn-group" role="group">
-                                                            <button id="btnGroupDrop2" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Comando
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#EditarGrupo">Editar Encarregado</a>
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerEstudante">Ver Estudantes</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
+                                        
                                         </tbody>
                                     </table>
                                 </div>
@@ -117,7 +82,7 @@
             </div>
             <%--Modals--%>
 
-            <div class="modal fade" id="EditarGrupo">
+            <%-- <div class="modal fade" id="EditarGrupo">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -163,10 +128,13 @@
 
 
                 <!-- /.modal-dialog -->
-            </div>
+            </div> --%>
+
+
+
                       
 
-            <div class="modal fade" id="VerEstudante">
+            <%-- <div class="modal fade" id="VerEstudante">
                 <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -200,7 +168,18 @@
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
-            </div>
+            </div> --%>
+<%-- Lista de Modal --%>
+             
+             <div  id="modelContainer">
+
+                   
+
+             </div>
+                       
+<%-- Fim Lista de Modal --%>
+
+
 
             <!-- /.container-fluid -->
         </section>
@@ -216,5 +195,5 @@
         })
     </script>
 
-    <script src="/SISAA/Scripts/Controller/CreateStudent.js"></script>
+    <script src="/SISAA/Scripts/Controller/Parent.js"></script>
 </asp:Content>

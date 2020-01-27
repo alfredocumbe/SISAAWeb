@@ -204,12 +204,18 @@
     <Content Include="dist\js\adminlte.js.map" />
     <Content Include="dist\js\adminlte.min.js.map" />
     <Content Include="Pages\About.aspx" />
+    <Content Include="Pages\AdmCreateUser.aspx" />
+    <Content Include="Pages\AdmUser.aspx" />
+    <Content Include="Pages\Company.aspx" />
+    <Content Include="Pages\CreateCompany.aspx" />
     <Content Include="Pages\CreateUser.aspx" />
     <Content Include="Pages\DualList.aspx" />
     <Content Include="Pages\ImportParent.aspx" />
     <Content Include="Pages\ImportStudent.aspx" />
+    <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\NotSent.aspx" />
     <Content Include="Pages\Panding.aspx" />
+    <Content Include="Pages\Register.aspx" />
     <Content Include="Pages\SendSMS.aspx" />
     <Content Include="Pages\Sent.aspx" />
     <Content Include="Pages\Student.aspx" />
@@ -2350,12 +2356,47 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LoginSite.Master.cs">
+      <DependentUpon>LoginSite.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginSite.Master.designer.cs">
+      <DependentUpon>LoginSite.Master</DependentUpon>
+    </Compile>
     <Compile Include="Pages\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Pages\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdmCreateUser.aspx.cs">
+      <DependentUpon>AdmCreateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdmCreateUser.aspx.designer.cs">
+      <DependentUpon>AdmCreateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdmUser.aspx.cs">
+      <DependentUpon>AdmUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\AdmUser.aspx.designer.cs">
+      <DependentUpon>AdmUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Company.aspx.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Company.aspx.designer.cs">
+      <DependentUpon>Company.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CreateCompany.aspx.cs">
+      <DependentUpon>CreateCompany.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\CreateCompany.aspx.designer.cs">
+      <DependentUpon>CreateCompany.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CreateUser.aspx.cs">
       <DependentUpon>CreateUser.aspx</DependentUpon>
@@ -2385,6 +2426,13 @@
     <Compile Include="Pages\ImportStudent.aspx.designer.cs">
       <DependentUpon>ImportStudent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\NotSent.aspx.cs">
       <DependentUpon>NotSent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2398,6 +2446,13 @@
     </Compile>
     <Compile Include="Pages\Panding.aspx.designer.cs">
       <DependentUpon>Panding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\SendSMS.aspx.cs">
       <DependentUpon>SendSMS.aspx</DependentUpon>
@@ -2521,6 +2576,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="LoginSite.Master" />
     <None Include="packages.config" />
     <Content Include="Site2.Master" />
     <None Include="Web.Debug.config">

@@ -1,5 +1,4 @@
-﻿
-function getTableData(table) {
+﻿function getTableData(table) {
     var data = [];
     table.find('tr').each(function (rowIndex, r) {
         var cols = [];
@@ -28,15 +27,15 @@ function formatTable(tableData) {
     return data;
 }
 
-function limparCampos(){
+function limparCampos() {
     $("#parents tbody tr").remove();
     $("#studentName").val("");
 }
 
-function validar(){
+function validar() {
     var isValid = true;
 
-// TUDO
+    // TUDO
 
     return isValid;
 }
@@ -50,26 +49,26 @@ function sendrequest(data) {
         contentType: "application/json",
         method: "POST",
         data: JSON.stringify(data),
-        beforeSend: function (xhr) { 
-            console.log("Enviado os dados para o servidoor"); 
+        beforeSend: function (xhr) {
+            console.log("Enviado os dados para o servidoor");
         },
-        error: function (xhr) { 
+        error: function (xhr) {
             console.log("Ocorreu um erro na operacao");
-            Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
+            Toast.fire({ type: 'error', title: 'Estudante Cadastrado com Sucesso!' });
         },
-        success: function (xhr) { 
+        success: function (xhr) {
             console.log(xhr);
-            if(xhr.header.code == "200"){
+            if (xhr.header.code == "200") {
                 console.log("Operacao executada com sucesso!");
-                Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
+                Toast.fire({ type: 'success', title: 'Estudante Cadastrado com Sucesso!' });
                 limparCampos();
-            }else{
+            } else {
                 console.log("Ocorreu um erro na operacao" + xhr.header.message);
             }
         },
-        complete: function (xhr) { 
+        complete: function (xhr) {
             console.log("Operacacao terminada");
-         }
+        }
     });
 }
 
@@ -94,8 +93,8 @@ $("#form1").submit(function (event) {
         "body": body
     };
 
-    if(validar()){
+    if (validar()) {
         sendrequest(data);
     }
-   
+
 });

@@ -23,6 +23,14 @@
    the scrollbar off with overflow:hidden */
 body.loading .modalLoading {
     overflow: hidden;
+
+}
+.table td {
+    padding: .060rem .030rem .030rem .70rem !important;
+}
+
+.table .btn{
+    padding: .100rem .25rem !important;
 }
 
 /* Anytime the body has the loading class, our

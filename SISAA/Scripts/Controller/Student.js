@@ -1,4 +1,3 @@
-
 var Encarregados = [];
 
 function bindTable(data){
@@ -134,7 +133,7 @@ function bindTable(data){
     for (i = 0; i < count; i++) {
         $('#duallistbox'+i).bootstrapDualListbox();
     }
-
+    loadingStop();
   });   
 }
 
@@ -166,7 +165,7 @@ function sendrequest() {
     };
 
     $.ajax({
-        url: GlobalBaseURL + "api/Account",
+        url: GlobalBaseURL + "api/Account/GetAllStudent",
         dataType: "json", 
         contentType: "application/json",
         method: "POST",
@@ -175,14 +174,14 @@ function sendrequest() {
             //console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
+            loadingStop();
             //console.log("Ocorreu um erro na operacao");
             Toast.fire({type: 'error', title: ''});
         },
-        success: function (xhr) { 
+        success: function (xhr) {             
             bindTable(xhr.body);
             if(xhr.header.code == "200"){
                 //console.log("Operacao executada com sucesso!");
-                Toast.fire({type: 'success', title: ''});
                 limparCampos();
                 $('.duallistbox').bootstrapDualListbox();
             }else{
@@ -311,4 +310,3 @@ function AssociarEncarregado(count){
 }
 
 sendrequest();
-

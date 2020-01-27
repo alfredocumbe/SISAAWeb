@@ -6,7 +6,7 @@ var GlobalHeader = {
     "token": "tokemteste123"
 };
 
-// var GlobalBaseURL = "https://localhost:44338/";
+// var GlobalBaseURL = "https://192.168.88.201:44338/";
 
 var GlobalBaseURL = "http://localhost/SISAAWS/";
 

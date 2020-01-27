@@ -11,7 +11,13 @@ namespace SISAA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "console.log('script manager working...');", true);
 
+
+
+            }
         }
     }
 }
