@@ -150,7 +150,7 @@ function EditarEstudante(count){
     };
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 
@@ -301,7 +301,7 @@ function AssociarEncarregado(count){
     });
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": selectedParents[0]
     };
 

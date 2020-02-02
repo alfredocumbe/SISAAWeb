@@ -2,7 +2,7 @@
 function requestGrupos(){
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": 0
     }
 
@@ -80,15 +80,12 @@ function enviarSMSRequest(data){
             console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
-            loadingStop();
-            console.log("Ocorreu um erro na operacao");
             Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
         },
         success: function (xhr) { 
             console.log(xhr);
             if(xhr.header.code == "200"){
-                loadingStop();
-                console.log("SMS Enviada com sucesso!");
+                
                 Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
                 limparCampos();
             }else{
@@ -96,7 +93,7 @@ function enviarSMSRequest(data){
             }
         },
         complete: function (xhr) { 
-            console.log("Operacacao terminada");
+            loadingStop();
         }
     });  
 }
@@ -119,10 +116,10 @@ function enviarSMS(){
     var body = $.trim($("#compose-textarea").val());
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": {
             "body": body,
-            "AccountID": GlobalHeader.AccountID,
+            "AccountID": GlobalUser.header.AccountID,
             "groups": groups
         }
     };

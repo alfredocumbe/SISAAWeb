@@ -1,16 +1,4 @@
-﻿//Global Variable
-var GlobalHeader = {
-    "UserID": "49ea4e24-ad7f-4573-9bf3-d4c13ecfca3c",
-    "AccountID": "a90a3991-d053-4d28-ab8a-3539294f7349",
-    "system": "WEB",
-    "token": "tokemteste123"
-};
-
-// var GlobalBaseURL = "https://192.168.88.201:44338/";
-
-var GlobalBaseURL = "http://localhost/SISAAWS/";
-
-//Global Initialization
+﻿//Global Initialization
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
@@ -27,4 +15,16 @@ const loadingStop = function () {
     $body = $("body").removeClass("loading");
 };
 
+//Start Loaing
 loadingStart();
+
+//Set User Information 
+if (!(typeof GlobalUser === 'undefined')) {
+    if (GlobalUser != null){
+     console.log(GlobalUser.Body.Name);
+        $("#UserName").text(GlobalUser.Body.Name);
+    }
+}
+
+
+

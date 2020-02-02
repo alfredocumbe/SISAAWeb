@@ -84,12 +84,12 @@ $("#form1").submit(function (event) {
     var body = {
         "name": studentName,
         "gender": sexo,
-        "AccountID": GlobalHeader.AccountID,
+        "AccountID": GlobalUser.header.AccountID,
         "parents": parents
     }
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 

@@ -99,3 +99,6 @@
     </section>
 
 </asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
+    <script src="/SISAA/Scripts/Controller/Default.js"></script>
+</asp:Content>

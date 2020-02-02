@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json.Linq;
+using SISAA.Class;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Script.Serialization;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace SISAA.Pages
@@ -15,40 +13,98 @@ namespace SISAA.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
                
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            String username = txtUsername.Text;
-            String password = txtUsername.Text;
-
-
-            var data = new RequestBody
+            try
             {
-                header = new HeaderRequest
+                if (sigin())
                 {
-                    System = "WEB",
-                    Token = ""
-                },
-                Body = new LoginRequest
-                {
-                    Username = username,
-                    Password = password
+                    Response.Redirect("Default", false);
+                    return;
                 }
-            };
+                else
+                {
+                    this.passwordHelp.InnerText = "Os dados de autenticação estão incorretos!";
+                }
+            }catch(Exception ex)
+            {
+                this.passwordHelp.InnerText = "O Sistema não conseguiu autenticar suas credencias, por favor contacte a Equipa técnica!";
+                Log4NetFactory.buildLogger().Error("Login:", ex);
+            }
+        }
+        private bool sigin()
+        {
+            try
+            {
+                String username = txtUsername.Text;
+                String password = txtPassword.Text;
 
-            var jsonData = new JavaScriptSerializer().Serialize(data);
+                var data = new RequestBody
+                {
+                    header = new Header
+                    {
+                        System = "WEB",
+                        Token = ""
+                    },
+                    Body = new LoginRequest
+                    {
+                        Username = username,
+                        Password = password
+                    }
+                };
 
-            String rs = PostRequest(url: "http://192.168.88.166/SISAAWS/api/User/Login", json: jsonData);
+                var jsonData = new JavaScriptSerializer().Serialize(data);
 
-            JObject jObject = JObject.Parse(rs);
+                String BaseURL = "http://localhost/SISAAWS/";
 
-            var obj = jObject["body"]["name"];
+                String rs = PostRequest(url: BaseURL + "api/User/Login", json: jsonData);
 
-            var aaa=1;
+                JObject jObject = JObject.Parse(rs);
+
+                if (jObject == null) return false;
+                if (jObject["header"]["code"] == null) return false;
+                if (!jObject["header"]["code"].ToString().Equals("200")) return false;
+
+                var responseBody = toResponseBody(jObj: jObject);
+
+                Regist(rsBody: responseBody, BaseURL: BaseURL);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
+        private void Regist(ResponseBody rsBody, String BaseURL)
+        {
+            String rs = new JavaScriptSerializer().Serialize(rsBody);
+            Session["GlobalData"] = rs;
+            Session["BaseURL"] = BaseURL;
+        }
+
+        private ResponseBody toResponseBody(JObject jObj)
+        {
+            return new ResponseBody()
+            {
+                header = new Header
+                {
+                     AccountID = new Guid(jObj["body"]["accountID"].ToString()),
+                     System = "WEB",
+                     Token = HttpContext.Current.Session.SessionID,
+                     UserID = new Guid(jObj["body"]["userID"].ToString())
+                },
+                Body = new LoginResponse() 
+                {  
+                    Name = jObj["body"]["name"].ToString(),
+                    UserName = jObj["body"]["userName"].ToString()
+                }
+            };
+        }
 
         private static string PostRequest(string url, String json)
         {
@@ -97,7 +153,7 @@ namespace SISAA.Pages
         }
     }
 
-    public class HeaderRequest
+    public class Header
     {
         public Guid UserID { get; set; }
         public Guid AccountID { get; set; }
@@ -112,9 +168,22 @@ namespace SISAA.Pages
         public String Password { get; set; }
     }
 
+    public class LoginResponse
+    {
+        public String Name { get; set; }
+        public String UserName { get; set; }
+    }
+
     public class RequestBody
     {
-        public HeaderRequest header { get; set; }
+        public Header header { get; set; }
         public LoginRequest Body { get; set; }
+    }
+
+    public class ResponseBody
+    {
+        public Header header { get; set; }
+        public LoginResponse Body { get; set; }
+
     }
 }

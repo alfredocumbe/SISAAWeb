@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,12 +12,25 @@ namespace SISAA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            String page = Path.GetFileName(Request.Url.AbsolutePath);
+
+            var obj = Session["GlobalData"];
+
+            if (!page.ToLower().Equals("login"))
             {
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "console.log('script manager working...');", true);
-
-
-
+                if (obj == null)
+                {
+                    Response.Redirect("Login.aspx", false);
+                    return;
+                }
+                if (String.IsNullOrEmpty(obj.ToString()))
+                {
+                    Response.Redirect("Login.aspx", false);
+                    return;
+                }
+                String script = "var GlobalUser = " + Session["GlobalData"].ToString() + "; ";
+                script = script + "var GlobalBaseURL = '" + Session["BaseURL"].ToString() + "';";
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", script + ";", true);
             }
         }
     }

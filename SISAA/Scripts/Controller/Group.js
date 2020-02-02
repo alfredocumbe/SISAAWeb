@@ -40,8 +40,6 @@ function bindTable(data){
         console.log($tr);
 
         $("#group tbody").append($tr);
-
-        
         
     }); 
 

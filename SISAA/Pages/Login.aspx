@@ -34,7 +34,7 @@
     </div>
       <form method="post" id="form1" runat="server">
         <div class="input-group mb-3">
-          <asp:TextBox runat="server" CssClass="form-control" placeholder="Email/Username" ID="txtUsername" ></asp:TextBox>
+          <asp:TextBox runat="server" CssClass="form-control" placeholder="Email/Username" ID="txtUsername" Required="Invalid UserName"></asp:TextBox>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <asp:TextBox runat="server" CssClass="form-control" placeholder="Password" ID="txtPassword"></asp:TextBox>
+          <asp:TextBox runat="server" CssClass="form-control" placeholder="Password" ID="txtPassword" TextMode="Password" Required="Invalid Password"></asp:TextBox>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -54,6 +54,10 @@
           <div class="col-12">
             <asp:Button runat="server" CssClass="btn btn-primary btn-block" ID="btnLogin" style="background: #29A9E1;" OnClick="btnLogin_Click" Text="ENTRAR"></asp:Button>
           </div>
+            <div class="col-12">
+                <small id="passwordHelp" class="text-danger" runat="server">
+                </small>  
+            </div>
           <!-- /.col -->
         </div>
       </form>
