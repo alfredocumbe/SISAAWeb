@@ -1,16 +1,17 @@
 
 function limparCampos() {
     $("#userFullName").val("");
-    $("#userEmail").val("");
+    $("#userPhone").val("");
     $("#userName").val("");
     $("#userPassword").val("");
     $("#userConfirm").val("");
+    $("#form1").trigger("reset"); 
 }
 
 function validar() {
     var isValid = true;
 
-    // TUDO 
+
 
     return isValid;
 }
@@ -19,7 +20,7 @@ function sendrequest(data) {
     console.log(data);
     console.log(JSON.stringify(data));
     $.ajax({
-        url: GlobalBaseURL + "api/User",
+        url: GlobalBaseURL + "api/User/CreateUser",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
@@ -51,19 +52,20 @@ $("#form1").submit(function (event) {
     event.preventDefault();
     console.log(GlobalBaseURL);
     var userFullName = $("#userFullName").val();
-    var userEmail = $("#userEmail").val();
+    var userPhone = $("#userPhone").val();
     var userName = $("#userName").val();
     var userPassword = $("#userPassword").val();
-
+    userPhone = userPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
     var body = {
         "Name": userFullName,        
         "UserName": userName,
         "Password": userPassword,
-        "AccountID": GlobalHeader.AccountID
+        "Cellphone": userPhone,
+        "AccountID": GlobalUser.header.AccountID
     }
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 

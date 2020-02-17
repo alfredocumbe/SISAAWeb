@@ -1,5 +1,6 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="SISAA.Contact" %>
+﻿<%@ Page Title="Contactos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Parent.aspx.cs" Inherits="SISAA.Pages.Parent" %>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server"></asp:Content>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="Body" runat="server">
 
     <section class="content">
@@ -8,21 +9,11 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-9">
-                        <h1 class="m-0 text-dark">LISTA DE CONTACTOS</h1>
+                    <div class="col-sm-6">
+                        <h1 class="m-0 text-dark">Consulta de Contactos</h1>
                     </div>
                     <!-- /.col -->
-                    <div class="col-sm-3">
-                        <form class="form-inline ml-3">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="col-sm-6">
                     </div>
                     <!-- /.col -->
                 </div>
@@ -32,384 +23,133 @@
         </div>
         <!-- /.content-header -->
 
-
-        <div class="col-12 col-sm-6 col-md-2 d-flex align-items-stretch">
-        </div>
-
-        <!-- Default box -->
-        <div class="card card-solid">
-            <div class="card-body pb-0">
-                <div class="row align-items-stretch">
-
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- right column -->
+                    <div class="col-md-12">
+                        <!-- general form elements disabled -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Lista de Contactos</h3>
                             </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
+                            <!-- /.card-header -->
+                            <div class="pt-1">
+                                <div class="">
+                                    <input type="hidden" class="form-control" id="ContactsData">
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="contactos" class="table table-hover table-responsive">
 
+                                            <thead>
+                                                <tr>
+                                                    <th>Nome</th>
+                                                    <th>Email</th>
+                                                    <th>Celular</th>
+                                                    <th>Operações</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
+                                <!-- /.card-body -->
                             </div>
                         </div>
+                        <!-- /.card -->
+
                     </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-6 col-md-2 align-items-stretch">
-
-                        <div class="card bg-light">
-                            <div class="card-header text-muted border-bottom-0">
-                                Alfredo Cumbe
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-10 text-center pb-2">
-                                        <img src="/SISAA/dist/img/user3-128x128.jpg" alt="" class="img-circle img-fluid">
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>824844980</li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>alfredojoaocumbe@gmail.com</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="text-right">
-                                    <a href="#" class="btn btn-sm btn-primary">
-                                        <i class="fas fa-user"></i>View Profile
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--/.col (right) -->
                 </div>
+                <!-- /.row -->
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <nav aria-label="Contacts Page Navigation">
-                    <ul class="pagination justify-content-center m-0">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- /.card-footer -->
-        </div>
-        <!-- /.card -->
+            <%--Modals--%>
+
+            <div class="modal fade" id="editContact">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Alterar Dados do Contactos</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <!-- form start -->
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="parentName">Nome Completo</label>
+                                    <input type="hidden" class="form-control" id="parentID">
+                                    <input type="text" class="form-control" id="parentName" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="parentProfissao">Profissao</label>
+                                            <input type="text" class="form-control" id="parentProfissao" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="parentPhone">Celular</label>
+                                            <input type="text" class="form-control" id="parentPhone" required>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="parentAddress">Endereco</label>
+                                    <input type="text" class="form-control" id="parentAddress" required>
+                                </div>
+
+
+
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Editar Encarregado</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+
+
+
+        </section>
 
     </section>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
+    <script type="text/javascript">
+        $(function () {
+            //Bootstrap Duallistbox
+            $('.duallistbox').bootstrapDualListbox();
+
+            $('#contactos').removeAttr('width').DataTable({
+                scrollX: false,
+                scrollCollapse: false,
+                paging: true,
+                columnDefs: [
+                    { width: 300, targets: 0 },
+                    { width: 200, targets: 1 },
+                    { width: 200, targets: 2 },
+                    { width: 100, targets: 2 }
+                ],
+                fixedColumns: true
+            });
+        })
+    </script>
+
+    <script src="/Scripts/Controller/Contact.js"></script>
 
 </asp:Content>

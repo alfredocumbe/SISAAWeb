@@ -28,6 +28,13 @@ function requestGrupos(){
     });       
 };
 
+$("#compose-textarea").keyup(function () {
+    $("#quickCharacters").text($(this).val().length);
+    var quantidade = $(this).val().length;
+    var total = Math.trunc((quantidade / 160))+1;
+    $("#quickNrSMS").text(total);
+});
+
 function bindGroup(data){
     console.log(data);   
     var htmlGroup = '';
@@ -66,7 +73,11 @@ function limparCampos(){
     for (i = 0; i < checks.length; i++) {
         checks[i].checked = false;
     } 
-    $("#reset").trigger( "click" );
+    $("#reset").trigger("click");
+
+    $("#quickCharacters").text(0);
+    $("#quickNrSMS").text(1);
+    $("#form1").trigger("reset"); 
 }
 
 function enviarSMSRequest(data){
@@ -80,20 +91,23 @@ function enviarSMSRequest(data){
             console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
-            Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
+            loadingStop();
+            console.log("Ocorreu um erro na operacao");
+            Toast.fire({ type: 'error', title: 'Ocorreu um erro na operacao'});
         },
         success: function (xhr) { 
             console.log(xhr);
             if(xhr.header.code == "200"){
-                
-                Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
+                loadingStop();
+                console.log("SMS Enviada com sucesso!");
+                Toast.fire({ type: 'success', title: 'SMS Enviada com sucesso!'});
                 limparCampos();
             }else{
                 console.log("Ocorreu um erro ao Enviar SMS" + xhr.header.message);
             }
         },
         complete: function (xhr) { 
-            loadingStop();
+            console.log("Operacacao terminada");
         }
     });  
 }

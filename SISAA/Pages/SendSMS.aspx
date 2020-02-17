@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SendSMS.aspx.cs" Inherits="SISAA.SendSMS" %>
+﻿<%@ Page Title="Envio de SMS" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SendSMS.aspx.cs" Inherits="SISAA.Pages.SendSMS" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="Body" runat="server">
 
@@ -45,12 +45,12 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/SISAA/Pages/Panding.aspx" class="nav-link">
+                                        <a href="#" class="nav-link">
                                             <i class="far fa-file-alt"></i>Pendentes
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/SISAA/Pages/NotSent.aspx" class="nav-link">
+                                        <a href="#" class="nav-link">
                                             <i class="fas fa-filter"></i>Nao Enviadas
                                         </a>
                                     </li>
@@ -72,7 +72,6 @@
                             <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <ul class="nav nav-pills flex-column" id="groups">
-
                                 </ul>
                             </div>
                             <!-- /.card-body -->
@@ -88,10 +87,21 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <input class="form-control" id="sendTo" placeholder="Para:" autocomplete="off" readonly>
+                                    <input class="form-control" id="sendTo" placeholder="Para:" autocomplete="off" disabled>
+                                </div>
+                                <div class="">
+                                    <textarea class="form-control" id="compose-textarea" rows="3" placeholder="Mensagem ..." style="height: 150px;"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <textarea id="compose-textarea" class="form-control" style="height: 150px;"></textarea>
+                                    <small class="text-bold">
+                                    <span id="">CARACTERES: </span>
+                                    <span id="quickCharacters">0</span>
+                                    <span> / </span>
+                                    <span id="quickCharactersTotal">160</span>
+                                    <br />
+                                    <span id="">SMS A ENVIR POR CONTACTO: </span>
+                                    <span id="quickNrSMS">1</span>
+                                    </small>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -118,13 +128,10 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
 
-<script src="/SISAA/Scripts/Controller/SendSMS.js"></script>
+    <script src="/Scripts/Controller/SendSMS.js"></script>
 
     <script type="text/javascript">
-        $(function () {
-            //Bootstrap Duallistbox
-            // $('.duallistbox').bootstrapDualListbox(); *@
-        })
+       
     </script>
-    
+
 </asp:Content>

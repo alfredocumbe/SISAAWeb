@@ -30,8 +30,6 @@ namespace SISAA.Pages
 
         }
 
-
-
         [WebMethod]
         public static string doSomething(int id)
         {

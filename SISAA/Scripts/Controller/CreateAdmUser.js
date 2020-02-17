@@ -1,7 +1,7 @@
 $( document ).ready(function() {
     
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": 0
     };
 
@@ -20,7 +20,6 @@ $( document ).ready(function() {
             Toast.fire({ type: 'error', title: 'Erro ao carregar empresas!' });
         },
         success: function (xhr) {
-            console.log(xhr);
             var option = "<option value='0'></option>";
             if (xhr.header.code == "200") {               
                 
@@ -47,10 +46,11 @@ $( document ).ready(function() {
 
 function limparCampos() {
     $("#userFullName").val("");
-    $("#userEmail").val("");
+    $("#userPhone").val("");
     $("#userName").val("");
     $("#userPassword").val("");
     $("#userConfirm").val("");
+    $("#form1").trigger("reset"); 
 }
 
 function validar() {
@@ -60,29 +60,34 @@ function validar() {
     account = $("#Accounts :selected").val();
     var userPassword = $("#userPassword").val();
     var userConfirm = $("#userConfirm").val();
+    var userPhone = $("#userPhone").val();
 
-    if (account =="0" ){
+    var compare = account.localeCompare("0");
+
+    if (compare < 0){
         isValid = false;
         Toast.fire({ type: 'error', title: 'O campo Empresa nao pode ser vazio!' });
     }
 
-    if (userConfirm != userPassword){
+    //if (userConfirm != userPassword){
+    //    isValid = false;
+    //    Toast.fire({ type: 'error', title: 'Password nao combinam' });
+    //}
+    
+    userPhone = userPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "").replace("_", "");
+
+    if (userPhone.length != 13) {
         isValid = false;
-        Toast.fire({ type: 'error', title: 'Password nao combinam' });
+        Toast.fire({ type: 'error', title: 'Numero de celular invalido!' });
     }
 
-    return isValid;
-    
+    return isValid;   
 }
 
 
-
-
 function sendrequest(data) {
-    console.log(data);
-    console.log(JSON.stringify(data));
     $.ajax({
-        url: GlobalBaseURL + "api/User",
+        url: GlobalBaseURL + "api/User/CreateUser",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
@@ -95,7 +100,6 @@ function sendrequest(data) {
             Toast.fire({ type: 'error', title: 'Erro na criacao de  Utilizador!' });
         },
         success: function (xhr) {
-            console.log(xhr);
             if (xhr.header.code == "200") {
                 console.log("Operacao executada com sucesso!");
                 Toast.fire({ type: 'success', title: 'Utilizador criado com Sucesso!' });
@@ -112,24 +116,26 @@ function sendrequest(data) {
 
 $("#form1").submit(function (event) {
     event.preventDefault();
-    console.log(GlobalBaseURL);
     var userFullName = $("#userFullName").val();
-    var userEmail = $("#userEmail").val();
+    var userPhone = $("#userPhone").val();
     var userName = $("#userName").val();
     var userPassword = $("#userPassword").val();
     var account = $("#Accounts :selected").val();
 
-    console.log(userFullName);
-
+    userPhone = userPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", "");
+        
     var body = {
         "name": userFullName,        
         "userName": userName,
         "password": userPassword,
+        "cellphone": userPhone,
         "AccountID": account
     }
 
+    console.log(body);
+
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateCompany.aspx.cs" Inherits="SISAA.Pages.CreateCompany" %>
+﻿<%@ Page Title="Criação de Empresas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateCompany.aspx.cs" Inherits="SISAA.Pages.CreateCompany" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">NOVA EMPRESA</h1>
+                        <h1 class="m-0 text-dark">Nova Escola</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -42,16 +42,15 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="companyShortName">Nome Abreviado</label>
-                                            <input type="text" class="form-control" id="companyShortName" placeholder="Digita Nome Abreviado" required>
+                                            <input type="text" class="form-control" id="companyShortName" placeholder="Digita Nome Abreviado" required="Campo de caracter obrigatório">
                                         </div>                                                                             
                                         
-
                                     </div>
                                     <div class="col-sm-9">                                        
 
                                         <div class="form-group">
                                             <label for="userName">Nome Longo</label>
-                                            <input type="text" class="form-control" id="companyLongName" placeholder="Digite Nome Longo" required>
+                                            <input type="text" class="form-control" id="companyLongName" placeholder="Digite Nome Longo" required="Campo de caracter obrigatório">
                                         </div>
 
                                     </div>
@@ -60,7 +59,7 @@
                                                          
 
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary">Criar Empresa</button>
+                                    <button type="submit" class="btn btn-primary">Criar Escola</button>
                                 </div>
 
                             </div>
@@ -80,5 +79,11 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ControllerScript" runat="server">
-    <script src="/SISAA/Scripts/Controller/CreateAccount.js"></script>
+    <script src="/Scripts/Controller/CreateAccount.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadingStop();
+        })
+    </script>
+
 </asp:Content>

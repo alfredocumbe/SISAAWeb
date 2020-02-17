@@ -7,7 +7,9 @@
         });
         data.push(cols);
     });
+
     return data;
+    
 };
 
 function formatRow(row) {
@@ -21,7 +23,7 @@ function formatRow(row) {
 
 function formatTable(tableData) {
     var data = [];
-    for (let i = 1; i < tableData.length; i++) {
+    for (let i = 1; i < tableData.length; i++) {       
         data.push(formatRow(tableData[i]));
     }
     return data;
@@ -30,21 +32,22 @@ function formatTable(tableData) {
 function limparCampos() {
     $("#parents tbody tr").remove();
     $("#studentName").val("");
+    $("#form1").trigger("reset"); 
 }
 
 function validar() {
     var isValid = true;
 
     // TUDO
+    
 
     return isValid;
 }
 
 function sendrequest(data) {
-    console.log(data);
-    console.log(JSON.stringify(data));
+    
     $.ajax({
-        url: GlobalBaseURL + "api/Student",
+        url: GlobalBaseURL + "api/Student/CreateStudent",
         dataType: "json",
         contentType: "application/json",
         method: "POST",

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateGroup.aspx.cs" Inherits="SISAA.CreateGroup" %>
+﻿<%@ Page Title="Criação de Turmas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateGroup.aspx.cs" Inherits="SISAA.Pages.CreateGroup" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server"></asp:Content>
@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">NOVA TURMA</h1>
+                        <h1 class="m-0 text-dark">Nova Turma</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -28,7 +28,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <!-- left column -->
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
@@ -52,58 +52,6 @@
                         <!-- /.card -->
 
                     </div>
-                    <!--/.col (left) -->
-                    <!-- right column -->
-                    <div class="col-md-6">
-                        <!-- general form elements disabled -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">Dados do Contactos</h3>
-                            </div>
-                            <!-- /.card-header -->
-                            <div class="">
-                                <div class="card-header">
-                                    <h3 class="card-title">Associar Contactos</h3>
-
-                                    <div class="card-tools">
-                                        <div class="input-group input-group-sm" style="width: 150px;">
-                                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <select class="duallistbox" multiple="multiple">
-                                                        <option selected>Alabama</option>
-                                                        <option>Alaska</option>
-                                                        <option>California</option>
-                                                        <option>Delaware</option>
-                                                        <option>Tennessee</option>
-                                                        <option>Texas</option>
-                                                        <option>Washington</option>
-                                                    </select>
-                                                </div>
-                                                <!-- /.form-group -->
-                                            </div>
-                                            <!-- /.col -->
-                                        </div>
-                                        <!-- /.row -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.card-body -->
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
 
                 </div>
                 <!--/.col (right) -->
@@ -121,7 +69,10 @@
         $(function () {
             //Bootstrap Duallistbox
             $('.duallistbox').bootstrapDualListbox();
+            loadingStop();
         })
     </script>
-    <script src="/SISAA/Scripts/Controller/CreateGroup.js"></script>
+    <script src="/Scripts/Controller/CreateGroup.js"></script>
+    
+
 </asp:Content>

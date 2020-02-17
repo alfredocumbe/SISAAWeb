@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateStudent.aspx.cs" Inherits="SISAA.CreateContact" %>
+﻿<%@ Page Title="Estudantes" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateStudent.aspx.cs" Inherits="SISAA.Pages.CreateContact" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server"></asp:Content>
@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">NOVO ESTUDANTE</h1>
+                        <h1 class="m-0 text-dark">Novo Estudante</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -40,6 +40,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputName">Nome Completo</label>
                                     <input type="text" class="form-control" id="studentName" placeholder="Digita nome" required>
+                                    <%--<input type="text" name="studentName" class="form-control is-invalid" id="studentName" placeholder="Enter email" aria-describedby="studentName-error" aria-invalid="true">
+                                    <span id="studentName-error" class="error invalid-feedback">Please enter a email address</span>--%>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputGender">Sexo</label>
@@ -52,6 +54,8 @@
                                         <label class="form-check-label">Femenino</label>
                                     </div>
                                 </div>
+
+                                
 
                                 <div class="">
                                     <button type="submit" class="btn btn-primary">Criar Estudante</button>
@@ -67,16 +71,16 @@
                     <!-- right column -->
                     <div class="col-md-8">
                         <!-- general form elements disabled -->
-                        <div class="card card-primary">
+                        <div class="card card-primary" style="height: 305px;">
                             <div class="card-header">
                                 <h3 class="card-title">Dados do Encarregado</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <div id="table" class="table-editable">
-                                    <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success">
+                                    <span class="table-add float-right mb-2 mr-2"><a href="#!" class="text-success">
                                         <i class="fas fa-plus fa-1x" aria-hidden="true"></i></a></span>
-                                    <table id="parents" class="table table-bordered table-responsive-md table-striped text-center">
+                                    <table id="parents" class="table table-bordered table-responsive-md table-sm">
                                         <thead>
                                             <tr>
                                                 <th class="text-center">Nome</th>
@@ -87,36 +91,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td class="pt-1-half" contenteditable="true">Encarregado 1</td>
-                                                <td class="pt-1-half" contenteditable="true">Profissão</td>
-                                                <td class="pt-1-half" contenteditable="true">Endereço</td>
-                                                <td class="pt-1-half" contenteditable="true">Celular</td>
-                                                <td>
-                                                    <span class="table-remove">
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-rounded btn-sm my-0">
-                                                            Remove</button></span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="pt-1-half" contenteditable="true">Encarregado 2</td>
-                                                <td class="pt-1-half" contenteditable="true">Profissão</td>
-                                                <td class="pt-1-half" contenteditable="true">Endereço</td>
-                                                <td class="pt-1-half" contenteditable="true">Celular</td>
-                                                <td>
-                                                    <span class="table-remove">
-                                                        <button type="button"
-                                                            class="btn btn-danger btn-rounded btn-sm my-0">
-                                                            Remove</button></span>
-                                                </td>
-                                            </tr>
-                                            <!-- This is our clonable table line -->
-
                                         </tbody>
                                     </table>
                                 </div>
-                               
+
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -134,5 +112,15 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
-    <script src="/SISAA/Scripts/Controller/CreateStudent.js"></script>
+    <script src="/Scripts/Controller/CreateStudent.js"></script>
+        <script src="/Scripts/Site.js"></script>
+    <script>
+        loadingStop();
+        //Datemask dd/mm/yyyy
+        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+        //Datemask2 mm/dd/yyyy
+        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+        //Money Euro
+        $('[data-mask]').inputmask()
+    </script>
 </asp:Content>

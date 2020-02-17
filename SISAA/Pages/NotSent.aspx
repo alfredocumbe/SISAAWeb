@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NotSent.aspx.cs" Inherits="SISAA.Pages.NotSent" %>
+﻿<%@ Page Title="Nao Enviadas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NotSent.aspx.cs" Inherits="SISAA.Pages.NotSent" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

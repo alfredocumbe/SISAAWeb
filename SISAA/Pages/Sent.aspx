@@ -1,103 +1,88 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sent.aspx.cs" Inherits="SISAA.Pages.Sent" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
+﻿<%@ Page Title="Envidas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sent.aspx.cs" Inherits="SISAA.Pages.Sent" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server"></asp:Content>
 
- <section class="content">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="Body" runat="server">
 
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">LISTA DE MENSAGENS ENVIDAS</h1>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-sm-6">
-                    </div>
-                    <!-- /.col -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Historico de Mensagens Enviadas</h1>
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
+                <div class="col-sm-6">
+                </div>
+                <!-- /.col -->
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
         </div>
-        <!-- /.content-header -->
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content-header -->
 
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- right column -->
-                    <div class="col-md-12">
-                        <!-- general form elements disabled -->
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h3 class="card-title">LISTA DE MENSAGENS ENVIDAS</h3>
-                            </div>
-                            <!-- /.card-header -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12">
+                    <!-- general form elements disabled -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Historico de Mensagens Enviadas</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="pt-1">
+                            <input type="hidden" class="form-control" id="SentData">
                             <div class="">
-                                <div class="card-header">
-                                    <h3 class="card-title"></h3>
 
-                                    <div class="card-tools">
-                                        <div class="input-group input-group-sm" style="width: 300px;">
-                                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed text-nowrap">
+                                <div class="card-body">
+                                    <table id="sentsms" class="table table-hover table-responsive">
                                         <thead>
                                             <tr>
-                                                <th style="width: 10%">Celular</th>
-                                                <th style="width: 40%">Nome</th>
-                                                <th style="width: 10%">Data</th>
-                                                <th style="width: 40%">Mensagem</th>                                                
+                                                <th style="width: 50%;">Mensagem</th>
+                                                <th style="width: 20%;">Data de Envio</th>
+                                                <th style="width: 20%;">Turma</th>
+                                                <th style="width: 10%;">Operações</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>824844980</td>
-                                                <td>Elisio Mananze</td>
-                                                <td>23-01-2020 12:22</td>
-                                                <td>824844980</td>                                           
-                                            </tr>
-                                            <tr>
-                                                <td>824844980</td>
-                                                <td>Elisio Mananze</td>
-                                                <td>23-01-2020 12:22</td>
-                                                <td>824844980</td>                                           
-                                            </tr>
-
                                         </tbody>
+
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
+
 
                         </div>
-                        <!-- /.card -->
+                        <!-- /.card-body -->
 
                     </div>
-                    <!--/.col (right) -->
+                    <!-- /.card -->
+
                 </div>
-                <!-- /.row -->
+                <!--/.col (right) -->
             </div>
-                              
+            <!-- /.row -->
+        </div>       
 
-            <!-- /.container-fluid -->
-        </section>
-
-    </section>   
-
+        <!-- /.container-fluid -->
+    </section>
 
 
 
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ControllerScript" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
+
+    <script src="/Scripts/Controller/SentSms.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#sentsms").DataTable();
+        })
+    </script>
+
+
 </asp:Content>

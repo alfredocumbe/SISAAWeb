@@ -3,7 +3,8 @@ function limparCampos() {
     $("#parentName").val("");   
     $("#parentProfissao").val("");  
     $("#parentAddress").val("");  
-    $("#parentPhone").val("");   
+    $("#parentPhone").val(""); 
+    $("#form1").trigger("reset"); 
 }
 
 function validar() {
@@ -15,10 +16,9 @@ function validar() {
 }
 
 function sendrequest(data) {
-    console.log(data);
-    console.log(JSON.stringify(data));
+
     $.ajax({
-        url: GlobalBaseURL + "api/Parent",
+        url: GlobalBaseURL + "api/Parent/CreateParent",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
@@ -53,7 +53,8 @@ $("#form1").submit(function (event) {
     var parentProfissao = $("#parentProfissao").val();
     var parentAddress = $("#parentAddress").val();
     var parentPhone = $("#parentPhone").val();
-
+    parentPhone = parentPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ","");
+ 
     var students = new Array ({
                     "name": "Edio Junior",
                     "gender": "M"
@@ -64,13 +65,13 @@ $("#form1").submit(function (event) {
         "name": parentName,  
         "profession": parentProfissao,
         "address": parentAddress,
-        "cellphone": parentPhone, 
-        "AccountID": GlobalHeader.AccountID,
+        "cellphone": parentPhone,
+        "AccountID": GlobalUser.header.AccountID,
         "students": students
     }
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 

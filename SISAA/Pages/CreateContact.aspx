@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateContact.aspx.cs" Inherits="SISAA.CreateStudent" %>
+﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateContact.aspx.cs" Inherits="SISAA.Pages.CreateStudent" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="Body" runat="server">
 

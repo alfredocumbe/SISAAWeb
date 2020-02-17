@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Parent.aspx.cs" Inherits="SISAA.Parent" %>
+﻿<%@ Page Title="Encarregados" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Parent.aspx.cs" Inherits="SISAA.Pages.Parent" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server"></asp:Content>
@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">CONSULTA DE ENCARREGADOS</h1>
+                        <h1 class="m-0 text-dark">Consulta de Encarregados</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -32,46 +32,34 @@
                         <!-- general form elements disabled -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">LISTA DE ENCARREGADOS</h3>
+                                <h3 class="card-title">Lista de Encarregados</h3>
                             </div>
                             <!-- /.card-header -->
-                            <div class="">
-                                <div class="card-header">
-                                    <h3 class="card-title"></h3>
+                            <div class="pt-1">
+                                <div class="">
+                                    <input type="hidden" class="form-control" id="ParentsData">
+                                    <!-- /.card-header -->
+                                    <div class="card-body">
+                                        <table id="parentes" class="table table-hover table-responsive">
 
-                                    <div class="card-tools">
-                                        <div class="input-group input-group-sm" style="width: 300px;">
-                                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                            <thead>
+                                                <tr>
+                                                    <th >Nome</th>
+                                                    <th >Profissão</th>
+                                                    <th >Enderreço</th>
+                                                    <th >Celular</th>
+                                                    <th >Operações</th>
+                                                </tr>
+                                            </thead>
 
-                                            <div class="input-group-append">
-                                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                            </div>
-                                        </div>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body table-responsive p-0" style="height: 300px;">
-                                    <table class="table table-head-fixed text-nowrap" id="parentes">
-                                        <thead>
-                                            <tr>
-                                                <th class="d-none">ID</th>
-                                                <th style="width: 40%">Nome</th>
-                                                <th style="width: 15%">Profissao</th>
-                                                <th style="width: 25%">Endereco</th>
-                                                <th style="width: 10%">Celular</th>
-                                                <th style="width: 20%"></th>
-                                            </tr>
-                                        </thead>                                       
-                                        
-                                        <tbody>
-                                        
-                                        </tbody>
-                                    </table>
+                                    <!-- /.card-body -->
                                 </div>
                                 <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
-
                         </div>
                         <!-- /.card -->
 
@@ -82,11 +70,11 @@
             </div>
             <%--Modals--%>
 
-            <%-- <div class="modal fade" id="EditarGrupo">
+            <div class="modal fade" id="editParent">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Alterar Dados do Estudante</h4>
+                            <h4 class="modal-title">Alterar Dados do Encarregado</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -96,22 +84,33 @@
                             <!-- form start -->
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="groupName">Nome</label>
-                                    <input type="hidden" class="form-control" id="groupID">
-                                    <input type="text" class="form-control" id="groupName" placeholder="Digita nome">
+                                    <label for="parentName">Nome Completo</label>
+                                    <input type="hidden" class="form-control" id="parentID">
+                                    <input type="text" class="form-control" id="parentName" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="parentProfissao">Profissao</label>
+                                            <input type="text" class="form-control" id="parentProfissao" required>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="parentPhone">Celular</label>
+                                            <input type="text" class="form-control" id="parentPhone" required>
+                                        </div>
+
+                                    </div>
+
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputGender">Sexo</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="M" name="gender" checked="true">
-                                        <label class="form-check-label">Masculino</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" value="F" name="gender">
-                                        <label class="form-check-label">Femenino</label>
-                                    </div>
+                                    <label for="parentAddress">Endereco</label>
+                                    <input type="text" class="form-control" id="parentAddress" required>
                                 </div>
+
 
 
                             </div>
@@ -119,7 +118,7 @@
                         </div>
                         <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Gravar</button>
+                            <button type="submit" class="btn btn-primary">Editar Encarregado</button>
                         </div>
                     </div>
                     <!-- /.modal-content -->
@@ -128,56 +127,12 @@
 
 
                 <!-- /.modal-dialog -->
-            </div> --%>
-
-
-
-                      
-
-            <%-- <div class="modal fade" id="VerEstudante">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-
-                            <h4 class="modal-title">Ver Estudantes</h4>
-
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <div class="form-group">
-                                <select class="duallistbox" multiple="multiple">
-                                    <option selected>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>California</option>
-                                    <option>Delaware</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Washington</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div> --%>
-<%-- Lista de Modal --%>
-             
-             <div  id="modelContainer">
-
-                   
-
-             </div>
+            </div>
                        
-<%-- Fim Lista de Modal --%>
+            <div id="modelContainer">
+            </div>
+
+            <%-- Fim Lista de Modal --%>
 
 
 
@@ -190,10 +145,24 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ControllerScript" runat="server">
     <script type="text/javascript">
         $(function () {
-            //Bootstrap Duallistbox
-            $('.duallistbox').bootstrapDualListbox();
+
+            $('#parentes').removeAttr('width').DataTable({
+                scrollX: false,
+                scrollCollapse: false,
+                paging: true,
+                columnDefs: [
+                    { width: 200, targets: 0 },
+                    { width: 200, targets: 1 },
+                    { width: 150, targets: 2 },
+                    { width: 120, targets: 3 },
+                    { width: 70, targets: 4 }
+                ],
+                fixedColumns: true
+            });
+
         })
     </script>
 
-    <script src="/SISAA/Scripts/Controller/Parent.js"></script>
+    <script src="/Scripts/Controller/Parent.js"></script>
+
 </asp:Content>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateUser.aspx.cs" Inherits="SISAA.Pages.CreateUser" %>
+﻿<%@ Page Title="Utilizadores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CreateUser.aspx.cs" Inherits="SISAA.Pages.CreateUser" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">NOVO UTILIZADOR</h1>
+                        <h1 class="m-0 text-dark">Novo Utilizador</h1>
                     </div>
                     <!-- /.col -->
                     <div class="col-sm-6">
@@ -45,17 +45,26 @@
                                             <input type="text" class="form-control" id="userFullName" placeholder="Digita nome" required>
                                         </div>
                                     </div>
+
                                     <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="userEmail">Email</label>
-                                            <input type="email" class="form-control" id="userEmail" placeholder="Digita email" required>
+                                         <div class="form-group">
+                                            <label>Celular</label>
+
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                </div>
+                                                <input type="text" id="userPhone" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(+258) 9999-99999&quot;" data-mask="" im-insert="true">
+                                            </div>
+                                            <!-- /.input group -->
                                         </div>
                                     </div>
+                                   
 
                                 </div>
 
 
-                                <div class="row">
+                                <div class="row" style="display:none">
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <label for="userName">Login</label>
@@ -63,11 +72,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="userPassword">Password</label>
-                                            <input type="password" class="form-control" id="userPassword" placeholder="Password" required>
+                                            <input type="password" class="form-control" id="userPassword" placeholder="Password" style="display:none">
                                         </div>
                                         <div class="form-group">
                                             <label for="userConfirm">Confirm Password</label>
-                                            <input type="password" class="form-control" id="userConfirm" placeholder="Confirm Password" required >
+                                            <input type="password" class="form-control" id="userConfirm" placeholder="Confirm Password" style="display:none">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
@@ -76,9 +85,6 @@
 
                                 </div>
                                 
-
-                                
-
                                 <div class="">
                                     <button type="submit" class="btn btn-primary">Criar Utilizador</button>
                                 </div>
@@ -100,5 +106,16 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ControllerScript" runat="server">
-    <script src="/SISAA/Scripts/Controller/CreateUser.js"></script>
+    <script src="/Scripts/Controller/CreateUser.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loadingStop();
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+        })
+    </script>
 </asp:Content>

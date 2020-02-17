@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SISAA
+namespace SISAA.Pages
 {
 
 

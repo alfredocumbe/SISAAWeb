@@ -2,7 +2,7 @@
 function limparCampos() {
     $("#companyShortName").val("");
     $("#companyLongName").val("");
-    
+    $("#form1").trigger("reset");  
 }
 
 function validar() {
@@ -17,7 +17,7 @@ function sendrequest(data) {
     console.log(data);
     console.log(JSON.stringify(data));
     $.ajax({
-        url: GlobalBaseURL + "api/Account",
+        url: GlobalBaseURL + "api/Account/CreateAccount",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
@@ -27,13 +27,13 @@ function sendrequest(data) {
         },
         error: function (xhr) {
             console.log("Ocorreu um erro na operacao");
-            Toast.fire({ type: 'error', title: 'Empresa Cadastrada com Sucesso!' });
+            Toast.fire({ type: 'error', title: 'Erro no cadastro!' });
         },
         success: function (xhr) {
             console.log(xhr);
             if (xhr.header.code == "200") {
                 console.log("Operacao executada com sucesso!");
-                Toast.fire({ type: 'success', title: 'Empresa Cadastrada com Sucesso!' });
+                Toast.fire({ type: 'success', title: 'Escola Cadastrada com Sucesso!' });
                 limparCampos();
             } else {
                 console.log("Ocorreu um erro na operacao" + xhr.header.message);
@@ -58,7 +58,7 @@ $("#form1").submit(function (event) {
     }
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 

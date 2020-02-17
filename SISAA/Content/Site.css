@@ -16,25 +16,27 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba( 255, 255, 255, .8 ) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+    background: rgba( 255, 255, 255, .8 ) url('/Content/loading.gif') 50% 50% no-repeat;
 }
 
 /* When the body has the loading class, we turn
    the scrollbar off with overflow:hidden */
 body.loading .modalLoading {
     overflow: hidden;
-
-}
-.table td {
-    padding: .060rem .030rem .030rem .70rem !important;
-}
-
-.table .btn{
-    padding: .100rem .25rem !important;
+    display: block;
 }
 
 /* Anytime the body has the loading class, our
    modal element will be visible */
-body.loading .modalLoading {
+/*body.loading .modalLoading {
     display: block;
-}		
+}*/
+
+
+.table td {
+    padding: .060rem .030rem .030rem .70rem !important;
+}
+
+.table .btn {
+    padding: .100rem .25rem !important;
+}

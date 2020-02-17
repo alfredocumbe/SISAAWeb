@@ -1,167 +1,10 @@
-var Encarregados = [];
 
-function bindTable(data){
-    
-    $("#parents tbody tr").remove();
-    
-    var count = 0;
-    var EditarGrupo = '';
-    var VerEncarregado = '';
-    buscarEncarregado();
-
-    const sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-    };
-    sleep(500).then(() => {
-        //do stuff
-        console.log("Encarregados...");
-        console.log(Encarregados);
-    $.each(data, function(i, item) {
-
-        count = count + 1;
-
-        var sexoM = "";
-        var sexoF = "";
-
-        if(item.gender == "M"){
-            sexoM = "checked='true'"
-        }else{
-            sexoF = "checked='true'";
-        }
-
-        var btnRow = '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">';
-        
-        btnRow  = btnRow + '<div class="btn-group" role="group">';
-        btnRow  = btnRow + '<button id="btnGroupDrop'+count+'" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Comando </button>';
-        btnRow  = btnRow + '<div class="dropdown-menu" aria-labelledby="btnGroupDrop'+count+'">';
-        btnRow  = btnRow + '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#EditarEstudante'+count+'">Editar Estudante</a>';
-        btnRow  = btnRow + '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerEncarregado'+count+'">Ver Encarregados</a>';
-        btnRow  = btnRow + '</div></div></div>';
-
-        var hiddenStudentID = '<input type="hidden" id="StudentID'+count+'" name="StudentID" value="'+item.studentID+'">';
-        
-        EditarGrupo = EditarGrupo + hiddenStudentID;
-
-        EditarGrupo = EditarGrupo + '<div class="modal fade" id="EditarEstudante'+count+'">';
-        EditarGrupo = EditarGrupo + '<div class="modal-dialog modal-lg">';
-        EditarGrupo = EditarGrupo + '<div class="modal-content">';
-        EditarGrupo = EditarGrupo + '<div class="modal-header">';
-        EditarGrupo = EditarGrupo + '<h4 class="modal-title">Alterar Dados do Estudante('+item.name+')</h4>';
-        EditarGrupo = EditarGrupo + '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-        EditarGrupo = EditarGrupo + '<span aria-hidden="true">&times;</span></button></div>';
-        EditarGrupo = EditarGrupo + '<div class="modal-body">';
-        EditarGrupo = EditarGrupo + '<!-- form start -->';
-        EditarGrupo = EditarGrupo + '<div class="card-body">';
-        EditarGrupo = EditarGrupo + '<div class="form-group">';
-        EditarGrupo = EditarGrupo + '<label for="groupName">Nome</label>';
-        EditarGrupo = EditarGrupo + '<input type="hidden" class="form-control" id="groupID'+count+'">';
-        EditarGrupo = EditarGrupo + '<input type="text" value="'+item.name+'" id="Name'+count+'" class="form-control" placeholder="Digita nome">';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '<div class="form-group">';
-        EditarGrupo = EditarGrupo + '<label for="exampleInputGender">Sexo</label>';
-        EditarGrupo = EditarGrupo + '<div class="form-check">';
-        EditarGrupo = EditarGrupo + '<input class="form-check-input" type="radio" value="M" name="gender'+count+'" '+sexoM+'>';
-        EditarGrupo = EditarGrupo + '<label class="form-check-label">Masculino</label>';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '<div class="form-check">';
-        EditarGrupo = EditarGrupo + '<input class="form-check-input" type="radio" value="F" name="gender'+count+'"  '+sexoF+'>';
-        EditarGrupo = EditarGrupo + '<label class="form-check-label">Femenino</label>';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '<!-- /.card-body -->';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '<div class="modal-footer justify-content-between">';
-        EditarGrupo = EditarGrupo + '<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>';
-        EditarGrupo = EditarGrupo + '<button type="button" class="btn btn-primary" onclick=(EditarEstudante('+count+'))>Gravar</button>';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '<!-- /.modal-content -->';
-        EditarGrupo = EditarGrupo + '</div>';
-        EditarGrupo = EditarGrupo + '<!-- /.modal-dialog -->';
-        EditarGrupo = EditarGrupo + '</div>';        
-
-        var $tr = $('<tr>').append(
-            $('<td class="d-none">').text(item.studentID),
-            $('<td>').text(item.name),
-            $('<td>').text(item.gender),
-            $('<td>').html(btnRow)
-        );
-
-        $("#parents tbody").append($tr);
-
-        var option = "";
-
-        for (i = 0; i < Encarregados.length; i++) {
-            option = option + '<option value="'+Encarregados[i].parentID+'">'+Encarregados[i].name+'</option>';
-        }
-
-        // $.each(Encarregados, function(i, item) {
-        //     option = option + '<option value="'+item.parentID+'">'+item.name+'</option>';
-        // });
-
-        VerEncarregado = VerEncarregado + '<div class="modal fade" id="VerEncarregado'+count+'">';
-        VerEncarregado = VerEncarregado + '<div class="modal-dialog modal-xl">';
-        VerEncarregado = VerEncarregado + '    <div class="modal-content">';
-        VerEncarregado = VerEncarregado + '        <div class="modal-header">';
-        VerEncarregado = VerEncarregado + '            <h4 class="modal-title">Ver Encarregados ('+item.name+')</h4>';
-        VerEncarregado = VerEncarregado + '            <button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-        VerEncarregado = VerEncarregado + '                <span aria-hidden="true">&times;</span>';
-        VerEncarregado = VerEncarregado + '            </button>';
-        VerEncarregado = VerEncarregado + '        </div>';
-        VerEncarregado = VerEncarregado + '        <div class="modal-body">';
-        VerEncarregado = VerEncarregado + '            <div class="form-group">';
-        VerEncarregado = VerEncarregado + '                <select class="duallistbox" multiple="multiple" id="duallistbox'+count+'" >';
-        VerEncarregado = VerEncarregado + option;
-        VerEncarregado = VerEncarregado + '                </select>';
-        VerEncarregado = VerEncarregado + '            </div>';
-        VerEncarregado = VerEncarregado + '        </div>';
-        VerEncarregado = VerEncarregado + '        <div class="modal-footer justify-content-between">';
-        VerEncarregado = VerEncarregado + '            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
-        VerEncarregado = VerEncarregado + '            <button type="button" class="btn btn-primary" onclick="AssociarEncarregado('+count+')">Save changes</button>';
-        VerEncarregado = VerEncarregado + '        </div>';
-        VerEncarregado = VerEncarregado + '    </div>';
-        VerEncarregado = VerEncarregado + '    <!-- /.modal-content -->';
-        VerEncarregado = VerEncarregado + '</div>';
-        VerEncarregado = VerEncarregado + '<!-- /.modal-dialog -->';
-        VerEncarregado = VerEncarregado + '</div>';
-
-    }); 
-
-    $("#modelContainer").html(EditarGrupo + VerEncarregado);
-
-    for (i = 0; i < count; i++) {
-        $('#duallistbox'+i).bootstrapDualListbox();
-    }
-    loadingStop();
-  });   
-}
-
-function EditarEstudante(count){
-
-    var newName = $("#Name"+count).val();
-    var gender = $("input[name='gender"+count+"']:checked").val();
-    var StudentID = $("#StudentID"+count).val();
-
-    var body = {
-        "StudentID": StudentID,
-        "name": newName,
-        "gender": gender
-    };
+function sendrequest() {
+    console.log(GlobalUser.header);
 
     var data = {
         "header": GlobalUser.header,
-        "body": body
-    };
-
-    sendRequestEditarEstudante(data);
-
-}
-
-function sendrequest() {
-    var data = {
-        "header": GlobalHeader,
-        "body": GlobalHeader.AccountID
+        "body": GlobalUser.header.AccountID
     };
 
     $.ajax({
@@ -198,7 +41,8 @@ function limparCampos(){
     
 }
 
-function sendRequestEditarEstudante(data){
+function sendRequestEditarEstudante(data) {
+    event.preventDefault();
     $.ajax({
         url: GlobalBaseURL + "api/Student/UpdateStudent",
         dataType: "json",
@@ -206,107 +50,237 @@ function sendRequestEditarEstudante(data){
         method: "POST",
         data: JSON.stringify(data),
         beforeSend: function (xhr) { 
-            //console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
-            //console.log(xhr);
-            //console.log("Ocorreu um erro na operacao");
-            Toast.fire({type: 'error', title: 'Estudante Cadastrado com Sucesso!'});
+            Toast.fire({type: 'error', title: 'Erro na Alteracao de dados!'});
         },
-        success: function (xhr) { 
-            console.log(xhr);
-            bindTable(xhr.body);
-            if(xhr.header.code == "200"){
-                //console.log("Operacao executada com sucesso!");
-                Toast.fire({type: 'success', title: 'Estudante Cadastrado com Sucesso!'});
-                limparCampos();
-            }else{
-                //console.log("Ocorreu um erro na operacao" + xhr.header.message);
+        success: function (xhr) {            
+            
+            if (xhr.header.code == "200") {
+                loadData();
+                Toast.fire({ type: 'success', title: 'Alteracao feita com Sucesso!' });
+                $("#editStudent").modal("hide");
+            } else {
+
             }
+            
         },
         complete: function (xhr) { 
-            //console.log("Operacacao terminada");
+
          }
     });    
 }
 
-// const getUser = function (){
-//     var Encarregados = [];
-//     var data = {
-//         "header": GlobalHeader,
-//         "body": 0
-//     };
 
-//     $.ajax({
-//         url: GlobalBaseURL + "api/Parent/GetALL",
-//         dataType: "json",
-//         contentType: "application/json",
-//         method: "POST",
-//         data: JSON.stringify(data),
-//         beforeSend: function (xhr) { 
-//             //console.log("Enviado os dados para o servidoor"); 
-//         },
-//         error: function (xhr) { 
-//             //console.log(xhr);
-//             //console.log("Ocorreu um erro na operacao");
-//         },
-//         success: function (xhr) { 
-//             Encarregados = xhr.body
-//             console.log("success");
-//         },
-//         complete: function (xhr) { 
-//             //console.log("Operacacao terminada");
-//          }
-//     });  
-//     return Encarregados;
-// };
 
-function buscarEncarregado(){
+function loadData() {
     
     var data = {
-        "header": GlobalHeader,
-        "body": 0
+        "header": GlobalUser.header,
+        "body": GlobalUser.header.AccountID
     };
 
     $.ajax({
-        url: GlobalBaseURL + "api/Parent/GetALL",
+        url: GlobalBaseURL + "api/Account/GetAllStudent",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
         data: JSON.stringify(data),
-        beforeSend: function (xhr) { 
+        beforeSend: function (xhr) {
             //console.log("Enviado os dados para o servidoor"); 
         },
-        error: function (xhr) { 
-            //console.log(xhr);
+        error: function (xhr) {
+            loadingStop();
             //console.log("Ocorreu um erro na operacao");
+            Toast.fire({ type: 'error', title: '' });
         },
-        success: function (xhr) { 
-            Encarregados = xhr.body
-            console.log("success");
+        success: function (xhr) {
+            
+            if (xhr.header.code == "200") {
+
+                $('#StudentsData').val(JSON.stringify(xhr.body));
+                populateDataTable(xhr.body);
+
+            } else {
+                //console.log("Ocorreu um erro na operacao" + xhr.header.message);
+            }
         },
-        complete: function (xhr) { 
+        complete: function (xhr) {
             //console.log("Operacacao terminada");
-         }
-    });  
+        }
+    });
 }
 
-function AssociarEncarregado(count){
-    console.log(count);
-    console.log($("#duallistbox"+count));
+// populate the data table with JSON data
+function populateDataTable(data) {
+   
+    var count = 0;  
 
-    var selectedParents = [];
-    $.each($("#duallistbox"+count), function(){            
-        selectedParents.push($(this).val());
+    // clear the table before populating it with more data
+    $("#example1").DataTable().clear();
+
+    $.each(data, function (i, item) {
+
+        count = count + 1;
+
+        var sexo = "";
+        var deleted ="N&Atilde;O"
+
+        if (item.gender == "M") {
+            sexo = "Masculino"
+        } else {
+            sexo = "Feminino";
+        }
+
+        if (item.isDeleted == false) {
+
+            deleted ="SIM"
+        }
+
+        var btnRow = '<div class="btn-group pull-right" role="group" aria-label="Button group with nested dropdown">';
+
+        btnRow = btnRow + '<div class="btn-group" role="group">';
+        btnRow = btnRow + '<button id="btnGroupDrop' + count + '" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    Opera&ccedil;&otilde;es  </button>';
+        btnRow = btnRow + '<div class="dropdown-menu" aria-labelledby="btnGroupDrop' + count + '">';
+        btnRow = btnRow + '<a class="dropdown-item" href="#" onclick="Edit(\'' + item.studentID + '\');" data-toggle="modal" data-target="#EditarEstudante' + count + '"><i class="fas fa-user-edit"></i>Editar</a>';
+        btnRow = btnRow + '<a class="dropdown-item" href="#" onclick="JoinStudentParent(\'' + item.studentID + '\');" data-toggle="modal" data-target="#VerEncarregado' + count + '"><i class="fas fa-eye nav-icon"></i>Ver Encarregados</a>'; 
+        btnRow = btnRow + '<a class="dropdown-item" href="#" onclick="deleteStudent(\'' + item.studentID + '\');" data-toggle="modal" data-target="#EditarEstudante' + count + '"><i class="fas fa-trash-alt"></i>Remover</a>';
+        btnRow = btnRow + '</div></div></div>';
+
+        $('#example1').dataTable().fnAddData([
+            item.name,
+            sexo,
+            btnRow
+        ]);
     });
+
+    loadingStop();
+}
+
+
+function getStudent(studentData, studentID) {
+
+    for (var i = 0; i < studentData.length; i++) {
+        var obj = studentData[i];
+        if (obj.studentID == studentID) {            
+            return obj;
+        }
+
+    }
+}
+
+function JoinStudentParent(studentID) {
+    $(location).attr('href', "/Pages/StudentParent?ID=" + studentID);
+}
+
+function deleteStudent(studentID) {
+    event.preventDefault();
+    $.confirm({
+        title: 'Remover estudante!',
+        content: 'Certeza que deseja remover este estudante?',
+        buttons: {
+
+            confirm: function () {
+
+                var data = {
+                    "header": GlobalUser.header,
+                    "body": studentID
+                };
+
+                $.ajax({
+                    url: GlobalBaseURL + "api/Student/DeleteStudent",
+                    dataType: "json",
+                    contentType: "application/json",
+                    method: "POST",
+                    data: JSON.stringify(data),
+                    beforeSend: function (xhr) {
+                    },
+                    error: function (xhr) {
+                        loadingStop();
+                        Toast.fire({ type: 'error', title: '' });
+                    },
+                    success: function (xhr) {
+
+                        if (xhr.header.code == "200") {
+                            loadData();
+                            Toast.fire({ type: 'success', title: 'Estudante removido com sucesso!' });
+
+                        } else {
+                        }
+                    },
+                    complete: function (xhr) {
+                    }
+                });
+
+                
+            },
+            cancel: function () {
+                
+            }
+        }
+    });
+}
+
+
+function Edit(studentID) {
+    var objStudent;
+    var studentData = JSON.parse($("#StudentsData").val());
+
+    
+
+    var objStudent = getStudent(studentData, studentID);
+
+    console.log(objStudent);
+
+    console.log(objStudent);
+
+    var sexoM = false;
+    var sexoF = false;
+
+    console.log(objStudent.studentID);
+
+    if (objStudent.gender == "M") {
+        sexoM = true;
+    }
+
+    console.log(objStudent.studentID);
+
+    if (objStudent.gender == "F") {
+        sexoF = true;
+    }
+    $("#gender_1").attr('checked', sexoM);
+    $("#gender_2").attr('checked', sexoF);
+    $('#studentName').val(objStudent.name);
+    $('#studentID').val(objStudent.studentID);
+
+    $("#editStudent").modal() 
+}
+
+
+$("#form1").submit(function (event) {
+    event.preventDefault();
+    var studentID = $("#studentID").val();
+    var studentName = $("#studentName").val();
+    var sexo = $("input[name='gender']:checked").val();
+
+    var body = {
+        "StudentID": studentID,
+        "name": studentName,
+        "gender": sexo
+    };
 
     var data = {
         "header": GlobalUser.header,
-        "body": selectedParents[0]
+        "body": body
     };
 
-    //var selectedParent = $("#duallistbox"+count).children("option:selected").val();
-    console.log(selectedParents[0]);
-}
+    sendRequestEditarEstudante(data);
 
-sendrequest();
+});
+
+
+loadData();
+
+
+
+//sendrequest();

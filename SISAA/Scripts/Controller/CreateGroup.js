@@ -1,6 +1,7 @@
 
 function limparCampos() {
     $("#groupName").val("");    
+    $("#form1").trigger("reset"); 
 }
 
 function validar() {
@@ -15,7 +16,7 @@ function sendrequest(data) {
     console.log(data);
     console.log(JSON.stringify(data));
     $.ajax({
-        url: GlobalBaseURL + "api/Group",
+        url: GlobalBaseURL + "api/Group/CreateGroup",
         dataType: "json",
         contentType: "application/json",
         method: "POST",
@@ -49,12 +50,12 @@ $("#form1").submit(function (event) {
     var groupName = $("#groupName").val();
     
     var body = {
-        "name": groupName,        
-        "AccountID": GlobalHeader.AccountID
+        "name": groupName,
+        "AccountID": GlobalUser.header.AccountID
     }
 
     var data = {
-        "header": GlobalHeader,
+        "header": GlobalUser.header,
         "body": body
     };
 

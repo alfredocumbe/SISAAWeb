@@ -25,7 +25,7 @@ namespace SISAA.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.88.166/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://sisaa.co.mz/sisaaws/")]
         public string BaseURL {
             get {
                 return ((string)(this["BaseURL"]));

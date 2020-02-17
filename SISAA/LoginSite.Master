@@ -8,8 +8,8 @@
     </asp:ContentPlaceHolder>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%: Page.Title %> - My ASP.NET Application</title>
-
+    <title><%: Page.Title %> - SISAA</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="/SISAA/dist/img/Favicon/favicon-96x96.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/SISAA/plugins/fontawesome-free/css/all.min.css">
@@ -340,7 +340,7 @@
 
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-sms"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     SMS's
                

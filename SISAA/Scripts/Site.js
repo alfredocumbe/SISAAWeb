@@ -7,25 +7,26 @@ const $EXPORT = $('#export');
 
 const newTr = `
 <tr class="hide">
-  <td class="pt-2-half" contenteditable="true">Nome</td>
-  <td class="pt-2-half" contenteditable="true">Profissão</td>
-  <td class="pt-2-half" contenteditable="true">Endereço</td>
-  <td class="pt-2-half" contenteditable="true">Celular</td>
+  <td class="pt-2-half" contenteditable="true"></td>
+  <td class="pt-2-half" contenteditable="true"></td>
+  <td class="pt-2-half" contenteditable="true"></td>
+  <td class="pt-2-half" contenteditable="true" class="" data-inputmask="&quot;mask&quot;: &quot;(+258) 9999-99999&quot;" data-mask="" im-insert="true"></td>
   <td>
     <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remover</button></span>
   </td>
 </tr>`;
 
 $('.table-add').on('click', 'i', () => {
+    $('tbody').append(newTr);
+    //Remover o clone da ultima row
+    //const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
 
-    const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+    //if ($tableID.find('tbody tr').length === 0) {
 
-    if ($tableID.find('tbody tr').length === 0) {
+    //    $('tbody').append(newTr);
+    //}
 
-        $('tbody').append(newTr);
-    }
-
-    $tableID.find('table').append($clone);
+    //$tableID.find('table').append($clone);
 });
 
 $tableID.on('click', '.table-remove', function () {

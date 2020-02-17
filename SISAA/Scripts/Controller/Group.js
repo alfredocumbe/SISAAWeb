@@ -3,55 +3,48 @@ function bindTable(data){
     
     console.log(data);
 
-    $("#group tbody tr").remove();
+    $("#group").dataTable().fnClearTable();
     
     var count = 0;
-    var EditarGrupo = '';
-    var VerEncarregado = '';
-    //buscarEstudante();
 
-    const sleep = (milliseconds) => {
-        return new Promise(resolve => setTimeout(resolve, milliseconds))
-    };
-    sleep(500).then(() => {
-        //do stuff
-        console.log("Estudantes...");
    
     $.each(data, function(i, item) {
 
         count = count + 1;
-
+        var deleted = "N&Atilde;O"
         //TESTE
         var btnRow = '<div class="btn-group" role="group" aria-label="Button group with nested dropdown">';
         
-        btnRow  = btnRow + '<div class="btn-group" role="group">';
-        btnRow  = btnRow + '<button id="btnGroupDrop'+count+'" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Comando </button>';
-        btnRow  = btnRow + '<div class="dropdown-menu" aria-labelledby="btnGroupDrop'+count+'">';
-        btnRow  = btnRow + '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#EditarEncarregado'+count+'">Editar Turma</a>';
-        btnRow  = btnRow + '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#VerEncarregado'+count+'">Ver Contactos</a>';
-        btnRow  = btnRow + '</div></div></div>';
+        btnRow = btnRow + '<div class="btn-group" role="group">';
+        btnRow = btnRow + '<button id="btnGroupDrop' + count + '" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    Opera&ccedil;&otilde;es  </button>';
+        btnRow = btnRow + '<div class="dropdown-menu" aria-labelledby="btnGroupDrop' + count + '">';
+        btnRow = btnRow + '<a class="dropdown-item" href="#" onclick="Edit(\'' + item.groupID + '\');" data-toggle="modal" data-target="#EditarEstudante' + count + '"><i class="fas fa-user-edit"></i>Editar</a>';
+        btnRow = btnRow + '<a class="dropdown-item" href="#" onclick="JoinGroupContact(\'' + item.groupID + '\');" data-toggle="modal" data-target="#VerEncarregado' + count + '"><i class="fas fa-eye nav-icon"></i>Ver Contactos</a>';
+        btnRow = btnRow + '<a class="dropdown-item" href="#" onclick="deleteGroup(\'' + item.groupID + '\');" data-toggle="modal" data-target="#EditarEstudante' + count + '"><i class="fas fa-trash-alt"></i>Remover</a>';
+        btnRow = btnRow + '</div></div></div>';
        
+        
+        if (item.isDeleted == false) {
+            deleted = "SIM"
+        }
 
-        var $tr = $('<tr>').append(
-            $('<td class="d-none">').text(item.groupID),
-            $('<td>').text(item.name),
-            $('<td>').html(btnRow)
-        );
-        console.log($tr);
-
-        $("#group tbody").append($tr);
+        $('#group').dataTable().fnAddData([
+            item.name,
+            btnRow
+        ]);
+              
         
     }); 
 
-  });   
-}
+     loadingStop();
+  }
 
 
 
 function sendrequest() {
     var data = {
-        "header": GlobalHeader,
-        "body": GlobalHeader.AccountID
+        "header": GlobalUser.header,
+        "body": GlobalUser.header.AccountID
     };
 
     $.ajax({
@@ -61,35 +54,152 @@ function sendrequest() {
         method: "POST",
         data: JSON.stringify(data),
         beforeSend: function (xhr) { 
-            //console.log("Enviado os dados para o servidoor"); 
         },
         error: function (xhr) { 
             loadingStop();
-            //console.log("Ocorreu um erro na operacao");
-            Toast.fire({type: 'error', title: ''});
         },
         success: function (xhr) { 
-            loadingStop();
-            if(xhr.header.code == "200"){
-                // console.log(xhr.body);
-                bindTable(xhr.body);        
-                //console.log("Operacao executada com sucesso!");
-                limparCampos();
-                // $('.duallistbox').bootstrapDualListbox();
+            
+            if (xhr.header.code == "200") {
+                $('#GroupsData').val(JSON.stringify(xhr.body));
+                bindTable(xhr.body); 
             }else{
-                //console.log("Ocorreu um erro na operacao" + xhr.header.message);
             }
         },
         complete: function (xhr) { 
-            //console.log("Operacacao terminada");
          }
     });
 }
 
 
+function sendRequestEditarGroup(data) {
+    event.preventDefault();
+    $.ajax({
+        url: GlobalBaseURL + "api/Group/UpdateGroup",
+        dataType: "json",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify(data),
+        beforeSend: function (xhr) {
+        },
+        error: function (xhr) {
+            Toast.fire({ type: 'error', title: 'Erro na Alteração de dados!' });
+        },
+        success: function (xhr) {
 
-function limparCampos(){
-    
+            
+            if (xhr.header.code == "200") {
+                sendrequest();
+                Toast.fire({ type: 'success', title: 'Alteração feita com sucesso!' });                
+                $("#editGroup").modal("hide");
+            } else {
+
+            }
+
+        },
+        complete: function (xhr) {
+
+        }
+    });
 }
+
+function JoinGroupContact(groupID) {
+    $(location).attr('href', "/Pages/ContactGroup?ID=" + groupID);
+}
+
+function deleteGroup(groupID) {
+
+    $.confirm({
+        title: 'Remover Turma!',
+        content: 'Certeza que deseja remover esta Turma?',
+        buttons: {
+
+            confirm: function () {
+
+                var data = {
+                    "header": GlobalUser.header,
+                    "body": groupID
+                };
+
+                $.ajax({
+                    url: GlobalBaseURL + "api/Group/DeleteGroup",
+                    dataType: "json",
+                    contentType: "application/json",
+                    method: "POST",
+                    data: JSON.stringify(data),
+                    beforeSend: function (xhr) {
+                    },
+                    error: function (xhr) {
+                        loadingStop();
+                        Toast.fire({ type: 'error', title: '' });
+                    },
+                    success: function (xhr) {
+
+                        if (xhr.header.code == "200") {
+                            sendrequest();
+                            Toast.fire({ type: 'success', title: 'Turma removido com sucesso!' });
+
+                        } else {
+                        }
+                    },
+                    complete: function (xhr) {
+                    }
+                });
+
+
+            },
+            cancel: function () {
+
+            }
+        }
+    });
+}
+
+function getGroup(groupData, groupID) {
+
+    for (var i = 0; i < groupData.length; i++) {
+        var obj = groupData[i];
+        if (obj.groupID == groupID) {
+            return obj;
+        }
+
+    }
+}
+
+
+function Edit(groupID) {
+    var groupData = JSON.parse($("#GroupsData").val());
+
+    var objGroup = getGroup(groupData, groupID);
+
+    $("#groupID").val(objGroup.groupID);
+    $("#groupName").val(objGroup.name);
+
+    $("#editGroup").modal()
+}
+
+
+$("#form1").submit(function (event) {
+    event.preventDefault();
+    var groupID = $("#groupID").val();
+    var groupName = $("#groupName").val();
+
+    var body = {
+        "groupID": groupID,
+        "name": groupName,
+        "AccountID": GlobalUser.header.AccountID
+    }
+
+    var data = {
+        "header": GlobalUser.header,
+        "body": body
+    };
+
+    sendRequestEditarGroup(data);
+
+});
+
+
+
 
 sendrequest();

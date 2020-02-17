@@ -334,6 +334,6 @@
 
     </script>
 
-    <script src="/SISAA/Scripts/Controller/CreateStudent.js"></script>
+    <script src="/Scripts/Controller/CreateStudent.js"></script>
 
 </asp:Content>
